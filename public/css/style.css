@@ -1,0 +1,21 @@
+.icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 2px;
+}
+
+.icons {
+    padding: 20px 0;
+    margin: 20px 0;
+    justify-content: center;
+    border: 2px solid;
+    color: black;
+    background-color: turquoise;
+    border-radius: 5px;
+}
+
+.redClass {
+    background: #aa0000 !important;
+    color: #fff !important;
+}
