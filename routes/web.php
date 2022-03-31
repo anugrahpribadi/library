@@ -1,10 +1,5 @@
 <?php
 
-use App\Models\Transaksi;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Anggota;
-use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-route::get('/', function () {
+Route::get('/', function () {
     return redirect()->route('menu');
 });
 
@@ -28,18 +23,12 @@ Route::get('/info','PagesController@info')->name('info');
 
 route::get('/buku', 'PagesController@buku')->name('buku');
 
-Route::get('/yajra')->name('yajra.index')->uses('PagesController@datatablesIndex');
-
 Route::resource('/pages', 'PagesController');
 Route::get('/buku/cari','PagesController@cari')->name('cari');
 
 Route::get('/listkategori', 'PagesController@listkategori')->name('listkategori');
 
-// Route::get('cause_category', 'PagesController@category');
-Route::get('get_causes_against_category/{id}', 'PagesController@get_causes_against_category');
-
-Auth::routes(['verify' => true]);
-Route::get('/buku/cari','PagesController@cari')->name('cari');
+Auth::routes(['register' => false]);
 route::get('logout', 'Auth\LoginController@logout')->name('logout');
 route::get('/admin/user', 'Admin\UserController@create')->name('register');
 
@@ -69,16 +58,6 @@ route::middleware('admin')->group(function () {
     // Users
     route::resource('/users', 'Admin\UserController');
     route::get('/users/data/json', 'Admin\UserController@getData')->name('users.data');
-
-    Route::get('/', function () {
-        $kategori = App\Kategori::all();
-        return view('welcome',['kategori' => $kategori]);
-    });
-    
-    Route::get('getBuku/{id}', function ($id) {
-        $buku = App\Models\Buku::where('kategori_id',$id)->get();
-        return response()->json($buku);
-    });
 
     // Buku
     Route::resource('/buku', 'BukuController');
