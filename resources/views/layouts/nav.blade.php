@@ -31,6 +31,8 @@
 
 
     <!-- BEGIN: Theme CSS-->
+
+    <link rel="stylesheet" href="/app-assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/colors.css') }}">
@@ -109,22 +111,68 @@
                 </ul>
             </div>
 
+            
+
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
-                        <input type="text" class="form-control" id="cari" style="" name="cari" placeholder="Judul /Penulis /Kategori" value="{{ old('cari') }}">
+                        <input type="text" class="form-control" id="cari" style="width: 300px;" name="cari" placeholder="Judul /Penulis /Kategori" value="{{ old('cari') }}">
                     </ul>
                 </form>
             </div>
 
+            
+            <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Panduan Pengguna
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-scrollable modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">My Library Panduan Pengguna</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <h3> User Anggota </h3>
+                            <p> 1. Login dengan Email & Password yang anda miliki
+                                <p><img src="img/panduan/Login.png" style="width: 700px;"></p>
+                                <p> 2. Di Halaman menu Navbar terdapat Beranda, Buku, dan Riwayat Peminjaman User Tersebut
+                                    <p><img src="img/panduan/UserAnggota-Navbar.png" style="width: 700px;"></p>
+                                <p> 3. Riwayat berfungsi agar User Anggota mengetahui Buku yang ia Pinjam dan apakah sudah dikembalikan apa belum buku tersebut
+                                    <p><img src="img/panduan/Riwayat-UserAnggota.png" style="width: 700px;"></p>
+                                    <hr>
+                                    <h5>Berikut Tata Cara Mendownload/Meminjam Buku</h5>
+                                <p> 4. Pilih Buku yang anda inginkan
+                                    <p><img src="img/panduan/UserAnggota-AfterLogin.png" style="width: 700px;"></p>
+                                <p> 5. Klik Detail Buku
+                                <p> 6. Apakah buku tersebut bisa di Download atau Anda mengambil buku tersebut ke Perpustakaan
+                                    <p><img src="img/panduan/UserAnggota-DetailBuku-Download.png" style="width: 650px;">
+                                    <img src="img/panduan/UserAnggota-DetailBuku-BacaBuku.png" style="width: 650px;">
+                                <p> 7. Jika Anda memilih buku yang akan di Download,setelah anda klik Button Download buku maka akan menampilkan Halaman PDF seperti dibawah
+                                    <p><img src="img/panduan/UserAnggota-DownloadBuku.png" style="width: 650px;">
+                                <p> 8. dan Jika Anda memilih Baca buku maka, setelah anda klik Button Baca Buku akan menampilkan Alert seperti dibawah 
+                                    <p><img src="img/panduan/UserAnggota-BacaBuku.png" style="width: 650px;">
+                            <p> 9. Halo
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
             &ensp;
-
+            <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
+            &ensp;
+            
             <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <input class="typeahead form-control" type="text">
+                <input class="typeahead form-control" type="text">
                 </ul> -->
             <ul class="nav navbar-nav float-right">
                 @if (Auth::guest())
-                <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
+                <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
                 @else
                 Halo, {{ Auth::user()->name }}
                 &ensp;
@@ -134,10 +182,7 @@
         </div>
         </div>
 
-
     </nav>
-
-
 
 </head>
 
@@ -145,26 +190,6 @@
     <hr>
     <br>
     @yield('content')
-    
-    <!-- Jquery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <!-- Bootstrap Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    {{-- DATATABLE --}}
-    <script src="{{url('')}}/plugins/datatables/jquery.dataTables.min.js"></script>
-    <script src="{{url('')}}/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="{{url('')}}/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
-    <script src="{{url('')}}/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
-    <!-- AdminLTE App -->
-    <script src="{{url('')}}/dist/js/adminlte.js"></script>
-    <script type="text/javascript" src="{{url('')}}/plugins/select2/js/select2.full.min.js"></script>
-    <script type="text/javascript" src="{{url('')}}/dist/js/jquery.form.min.js">
-    </script>
-    <script type="text/javascript" src="{{url('')}}/plugins/orgchart/js/html2canvas.min.js"></script>
-    <script type="text/javascript" src="{{url('')}}/plugins/orgchart/js/jquery.orgchart.min.js"></script>
-    @yield('js')
 </body>
 
 </html>

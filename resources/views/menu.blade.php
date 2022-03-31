@@ -3,12 +3,6 @@
 @section('content')
 @csrf
   <div class="container-md">
-    <!-- <div class="col">
-      <a href="#" class="badge bg-success">Bisa Di Download</a>
-      <a href="#" class="badge bg-warning">Tidak Bisa Di Download</a>
-    </div> -->
-
-    
 
       <div class="row">
         <br>
@@ -27,12 +21,12 @@
                 <h6>{{ $b->penulis }}</h6>
                 <h4><b>{{ $b->judul }}</b></h4>
               @if (Auth::guest())
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Detail
               </button>
               
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">

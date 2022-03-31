@@ -32,12 +32,12 @@
                       <a href="{{$buku->baca_buku_url}}" class="btn btn-success">Download Buku {{$buku->judul}}</a>
                       @else
                       <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bacaBuku">
                         Baca Buku
                       </button>
 
                       <!-- Modal -->
-                      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal fade" id="bacaBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                           <div class="modal-content">
                             <div class="modal-header">

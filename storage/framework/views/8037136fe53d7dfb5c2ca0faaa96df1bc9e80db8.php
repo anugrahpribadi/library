@@ -1,12 +1,6 @@
 <?php $__env->startSection('content'); ?>
 <?php echo csrf_field(); ?>
   <div class="container-md">
-    <!-- <div class="col">
-      <a href="#" class="badge bg-success">Bisa Di Download</a>
-      <a href="#" class="badge bg-warning">Tidak Bisa Di Download</a>
-    </div> -->
-
-    
 
       <div class="row">
         <br>
@@ -25,12 +19,12 @@
                 <h6><?php echo e($b->penulis); ?></h6>
                 <h4><b><?php echo e($b->judul); ?></b></h4>
               <?php if(Auth::guest()): ?>
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
                 Detail
               </button>
               
               <!-- Modal -->
-              <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                   <div class="modal-content">
                     <div class="modal-header">

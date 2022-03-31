@@ -229,7 +229,7 @@ $actionUrl = route('buku.store');
                         <small>Kosongkan jika tidak ingin mengupdate, lihat <a href="{{ $object->baca_buku_url }}" target="_blank">File Sebelumnya <span class="fa fa-external-link"></span></a></small>
                         @endif
                       </div>
-                      <small>Don't choose anything if the book has a copyright</small>
+                      <small>Jangan menambahkan E-Book jika buku tersebut memiliki hak cipta</small>
                     </div>
                   </div>
                 </div>
@@ -239,7 +239,7 @@ $actionUrl = route('buku.store');
               <div class="col-md-2">
               </div>
               <div class="col-md-10">
-                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Save</button>
+                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Tambah</button>
               </div>
             </div>
           </div>

@@ -33,21 +33,6 @@
                                 </div>
                                 <label for="user-password">Password</label>
                             </fieldset>
-                            <div class="form-group d-flex justify-content-between align-items-center">
-                                <div class="text-left">
-                                    <fieldset class="checkbox">
-                                        <div class="vs-checkbox-con vs-checkbox-primary">
-                                            <input type="checkbox" name="remember">
-                                            <span class="vs-checkbox">
-                                                <span class="vs-checkbox--check">
-                                                    <i class="vs-icon feather icon-check"></i>
-                                                </span>
-                                            </span>
-                                            <span class="">Remember me</span>
-                                        </div>
-                                    </fieldset>
-                                </div>
-                            </div>
                             <hr>
                             <a class="btn btn-primary" href="{{ route('menu') }}">Kembali</a>
                             <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>
