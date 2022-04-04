@@ -77,16 +77,9 @@
     <?php endif; ?> -->
     
     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check("pinjam")): ?>
-    <li class="nav-item has-sub "><a href="#"><i class="feather icon-file-text"></i><span class="menu-title">Laporan</span></a>
-        <ul class="menu-content">
-            <li class="<?php echo e(in_array(\Request::route()->getName(), [
-                'pinjam',
-            ]) ? 'active' : ''); ?> nav-item"><a href="<?php echo e(route('pinjam')); ?>"><i class="feather icon-log-in"></i><span class="menu-item">Peminjaman</span></a></li>
-            <li class="<?php echo e(in_array(\Request::route()->getName(), [
-                'laporan',
-            ]) ? 'active' : ''); ?> nav-item"><a href="<?php echo e(route('laporan')); ?>"><i class="feather icon-log-out"></i><span class="menu-item">Pengembalian</span></a></li>
-        </ul>
-    </li>
+    <li class="<?php echo e(in_array(\Request::route()->getName(), [
+        'pinjam',
+    ]) ? 'active' : ''); ?> nav-item"><a href="<?php echo e(route('pinjam')); ?>"><i class="feather icon-file-text"></i><span class="menu-title">Laporan Peminjaman </span></a></li>
     <?php endif; ?>
 </ul>
 <?php /**PATH C:\xampp\htdocs\library\resources\views/inc/sidebar.blade.php ENDPATH**/ ?>

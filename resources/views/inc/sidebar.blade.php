@@ -77,15 +77,8 @@
     @endcan -->
     
     @can("pinjam")
-    <li class="nav-item has-sub "><a href="#"><i class="feather icon-file-text"></i><span class="menu-title">Laporan</span></a>
-        <ul class="menu-content">
-            <li class="{{ in_array(\Request::route()->getName(), [
-                'pinjam',
-            ]) ? 'active' : '' }} nav-item"><a href="{{ route('pinjam') }}"><i class="feather icon-log-in"></i><span class="menu-item">Peminjaman</span></a></li>
-            <li class="{{ in_array(\Request::route()->getName(), [
-                'laporan',
-            ]) ? 'active' : '' }} nav-item"><a href="{{ route('laporan') }}"><i class="feather icon-log-out"></i><span class="menu-item">Pengembalian</span></a></li>
-        </ul>
-    </li>
+    <li class="{{ in_array(\Request::route()->getName(), [
+        'pinjam',
+    ]) ? 'active' : '' }} nav-item"><a href="{{ route('pinjam') }}"><i class="feather icon-file-text"></i><span class="menu-title">Laporan Peminjaman </span></a></li>
     @endcan
 </ul>

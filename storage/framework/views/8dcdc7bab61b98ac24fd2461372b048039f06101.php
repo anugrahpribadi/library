@@ -1,15 +1,7 @@
-@extends('layouts.app', [
-'title' => 'Laporan Peminjaman',
-'breadcrumbs' => [
-'Laporan Peminjaman'
-],
-])
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <div class="card">
     <div class="card-content">
         <div class="card-body">
-
             <form class="form-inline" action="">
                 <!-- <div class="form-group">
                     <label for=""><b>Tanggal awal : </b></label>
@@ -20,9 +12,8 @@
                     <input name="tgl_akhir" type="date" class="form-control ml-1">
                 </div> -->
                 <!-- <button type="submit" class="btn btn-primary ml-1">Oke</button> -->
-                <a href="{{ route('cetak-peminjaman') }}" target="_blank" class="btn btn-primary ml-5"><span class="fa fa-print"></span> Cetak</a>
+                <a href="<?php echo e(route('cetak-pengembalian')); ?>" target="_blank" class="btn btn-primary ml-5"><span class="fa fa-print"></span> Cetak</a>
             </form>
-
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover">
                     <thead>
@@ -31,37 +22,31 @@
                             <th scope="col">Kode Transaksi</th>
                             <th scope="col">Judul Buku</th>
                             <th scope="col">Nama Anggota</th>
-                            <th scope="col">Tgl Peminjaman</th>
+                            <th scope="col">Tanggal Peminjaman</th>
                             <th scope="col">Batas Waktu Peminjaman</th>
-                            <th scope="col">Tgl Pengembalian</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @php
+                        <?php
                         $no = 0;
-                        @endphp
-                        @foreach ($data as $dataa)
+                        ?>
+                        <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                         <tr>
-                            <th scope="row">{{ ++$no }}</th>
-                            <td>{{ $dataa->kode }}</td>
-                            <td>{{ $dataa->buku_name }}</td>
-                            <td>{{ $dataa->user_name }}</td>
-                            <td>{{ date('d F Y', strtotime($dataa->tgl_pinjam)) }}</td>
-                            <td>{{ date('d F Y', strtotime($dataa->tgl_hrs_kembali)) }}</td>
-                            @if($dataa->deleted_at == null)
-                            <td>Belum Dikembalikan!</td>
-                            @else
-                            <td>{{ date('d F Y', strtotime($dataa->deleted_at)) }}</td>
-                            @endif
+                            <th scope="row"><?php echo e(++$no); ?></th>
+                            <td><?php echo e($data->kode); ?></td>
+                            <td><?php echo e($data->buku_name); ?></td>
+                            <td><?php echo e($data->user_name); ?></td>
+                            <td><?php echo e(date('d F Y', strtotime($data->tgl_pinjam))); ?></td>
+                            <td><?php echo e(date('d F Y', strtotime($data->tgl_hrs_kembali))); ?></td>
                         </tr>
-                        @endforeach
+                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
 
 <script>
     $('.dataTable').dataTable({
@@ -74,3 +59,9 @@
         }
     })
 </script>
+<?php echo $__env->make('layouts.app', [
+'title' => 'Laporan Pengembalian',
+'breadcrumbs' => [
+'Laporan Pengembalian'
+],
+], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\library\resources\views/laporan.blade.php ENDPATH**/ ?>
