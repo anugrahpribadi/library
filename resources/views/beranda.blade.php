@@ -6,21 +6,7 @@
 ])
 
 @section('content')
-
-<!-- <div class="row-md-3">
-    <div class="card">
-        <div class="card-header">
-            Quote
-        </div>
-        <div class="card-body">
-            <blockquote class="blockquote mb-0">
-                <p>A well-known quote, contained in a blockquote element.</p>
-                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
-            </blockquote>
-        </div>
-    </div>
-</div> -->
-
+<!-- 
 <div class="row">
     <div class="card">
         <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -34,7 +20,7 @@
             <br>
         </div>
     </div>
-</div>
+</div> -->
 
 <div class="col-md-3">
     <div class="card">
@@ -50,4 +36,10 @@
         </div>
     </div>
 </div>
+
+<footer class="footer footer-static footer-dark footer-fixed">
+    <p class="clearfix blue-grey lighten-2 mb-0"><span class="float-md-left d-block d-md-inline-block mt-25"><strong>Copyright</strong> MyLibrary &copy; {{ date('Y') }}</span>
+        <button class="btn btn-primary btn-icon scroll-top" type="button"><i class="feather icon-arrow-up"></i></button>
+    </p>
+</footer>
 @endsection

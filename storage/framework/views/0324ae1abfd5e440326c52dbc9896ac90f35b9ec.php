@@ -40,9 +40,9 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/dark-layout.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/semi-dark-layout.css')); ?>">
 
-   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/core/menu/menu-types/vertical-menu.css')); ?>">
@@ -54,19 +54,48 @@
     <!-- Select2 Bootstrap theme CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <style>
+        * {}
+
+        body {
+            margin: 0;
+        }
+
+        .navbar {
+
+            position: fixed;
+            position: left;
+            z-index: 99;
+            width: 100%;
+
+
+            background-color: blue;
+        }
+
+        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+        @media  screen and (max-width: 600px) {
+            .column {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <!-- END: Custom CSS-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-
-    <nav class="navbar navbar-expand-lg navbar-white bg-white">
+    <!-- <nav class="navbar navbar-dark bg-primary"> -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+        <!-- <nav class="navbar navbar-expand-lg navbar-white bg-white"> -->
         <div class="container-fluid">
             <a class="navbar-brand" href="http://127.0.0.1:8000/menu">
 
                 <img src="/img/logo.png" style="width: 70px; height: 35px;" alt="">
                 <!-- <h2 class="brand-text mb-0">MyLibrary</h2> -->
+                <p class="navbar-brand" style="font-family: Geneva;">MyLibrary</p>
             </a>
-            <a class="navbar-brand" href="http://127.0.0.1:8000/menu">MyLibrary</a>
+            <!-- <a class="navbar-brand" href="http://127.0.0.1:8000/menu">MyLibrary</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -115,7 +144,7 @@
                 </ul>
             </div>
 
-            
+
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
@@ -125,11 +154,11 @@
                 </form>
             </div>
 
-            
+
             <!-- <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Panduan Pengguna
             </button> -->
-            
+
             <!-- Modal -->
             <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-xl">
@@ -166,30 +195,30 @@
                     </div>
                 </div>
             </div> -->
-            
+
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
             &ensp;
-            
+
             <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <input class="typeahead form-control" type="text">
                 </ul> -->
             <ul class="nav navbar-nav float-right">
-            <li class="dropdown dropdown-user nav-item">
-                <?php if(Auth::guest()): ?>
-                <a href="<?php echo e(route('login')); ?>" class="btn btn-outline-primary">Login</a>
-                <?php else: ?>
-                <div class="dropdown">
-                    Halo, <?php echo e(Auth::user()->name); ?>
+                <li class="dropdown dropdown-user nav-item">
+                    <?php if(Auth::guest()): ?>
+                    <a href="<?php echo e(route('login')); ?>" class="btn btn-outline-primary">Login</a>
+                    <?php else: ?>
+                    <div class="dropdown">
+                        Halo, <?php echo e(Auth::user()->name); ?>
 
-                    <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="<?php echo e(route('profile.edit')); ?>"><i class="feather icon-edit"></i> Edit Profile</a>
-                        <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i class="feather icon-log-out"></i> Logout</a>
+                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?php echo e(route('profile.edit')); ?>"><i class="feather icon-edit"></i> Edit Profile</a>
+                            <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i class="feather icon-log-out"></i> Logout</a>
+                        </div>
                     </div>
-                </div>
-                <?php endif; ?>
-            </li>
+                    <?php endif; ?>
+                </li>
             </ul>
 
         </div>
@@ -200,7 +229,10 @@
 </head>
 
 <body>
-    <hr>
+    <br>
+    <br>
+    <br>
+    <br>
     <br>
     <?php echo $__env->yieldContent('content'); ?>
 </body>

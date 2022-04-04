@@ -4,15 +4,15 @@
         <div class="card-body">
 
             <form class="form-inline" action="">
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label for=""><b>Tanggal awal : </b></label>
                     <input name="tgl_awal" type="date" class="form-control ml-1">
                 </div>
                 <div class="form-group">
                     <label for=""><b>s/d tanggal : </b></label>
                     <input name="tgl_akhir" type="date" class="form-control ml-1">
-                </div> -->
-                <!-- <button type="submit" class="btn btn-primary ml-1">Oke</button> -->
+                </div>
+                <button type="submit" class="btn btn-primary ml-1">Oke</button>
                 <a href="<?php echo e(route('cetak-peminjaman')); ?>" target="_blank" class="btn btn-primary ml-5"><span class="fa fa-print"></span> Cetak</a>
             </form>
 

@@ -256,7 +256,7 @@ class TransaksiController extends Controller
     {
         $tgl_awal = date('Y-m-d', strtotime($request->tgl_awal));
         $tgl_akhir = date('Y-m-d', strtotime($request->tgl_awal));
-        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal . '00:00:00')->where('tgl_pinjam', '<=', $tgl_akhir . '23:59:59')->withTrashed()->get();
+        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal . '00:00:01')->where('tgl_pinjam', '<=', $tgl_akhir . '23:59:59')->withTrashed()->get();
 
         $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
         return view('pinjam', compact('title', 'data'));
