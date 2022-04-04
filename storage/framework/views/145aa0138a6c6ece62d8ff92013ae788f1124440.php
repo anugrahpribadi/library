@@ -1,4 +1,4 @@
-@php
+<?php
 if (isset($object)) {
 $viewData = [
 'title' => 'Edit User',
@@ -17,33 +17,35 @@ $viewData = [
 ]
 ];
 }
-@endphp
+?>
 
-@extends('layouts.app', $viewData)
 
-@section('content')
-{{-- Form Start --}}
-@php
+
+<?php $__env->startSection('content'); ?>
+
+<?php
 if (isset($object)) {
 $actionUrl = route('users.update', $object->id);
 } else {
 $actionUrl = route('users.store');
 }
-@endphp
+?>
 <div class="row">
-  <div class="{{ isset($object) ? "col-md-8" : "col-md-12" }}">
-    <form action="{{ $actionUrl }}" method="POST" enctype="multipart/form-data">
+  <div class="<?php echo e(isset($object) ? "col-md-8" : "col-md-12"); ?>">
+    <form action="<?php echo e($actionUrl); ?>" method="POST" enctype="multipart/form-data">
 
-      @if (isset($object))
-      {{ method_field('PATCH') }}
-      <input type="hidden" name="user_id" value="{{ $object->id }}" />
-      @endif
+      <?php if(isset($object)): ?>
+      <?php echo e(method_field('PATCH')); ?>
 
-      {{ csrf_field() }}
+      <input type="hidden" name="user_id" value="<?php echo e($object->id); ?>" />
+      <?php endif; ?>
+
+      <?php echo e(csrf_field()); ?>
+
 
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">{{ $viewData['title'] }}</h4>
+          <h4 class="card-title"><?php echo e($viewData['title']); ?></h4>
         </div>
         <br>
         <div class="card-body">
@@ -59,7 +61,7 @@ $actionUrl = route('users.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="name" value="{{ isset($object) ? $object->name : old('name') }}" placeholder="Name" autofocus>
+                      <input type="text" class="form-control" name="name" value="<?php echo e(isset($object) ? $object->name : old('name')); ?>" placeholder="Name" autofocus>
                       <div class="form-control-position">
                         <i class="feather icon-user"></i>
                       </div>
@@ -75,7 +77,7 @@ $actionUrl = route('users.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="alamat" value="{{ isset($object) ? $object->alamat : old('alamat') }}" placeholder="Alamat" autofocus>
+                      <input type="text" class="form-control" name="alamat" value="<?php echo e(isset($object) ? $object->alamat : old('alamat')); ?>" placeholder="Alamat" autofocus>
                       <div class="form-control-position">
                         <i class="feather icon-home"></i>
                       </div>
@@ -91,7 +93,7 @@ $actionUrl = route('users.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="telepon" value="{{ isset($object) ? $object->telepon : old('telepon') }}" placeholder="telepon" autofocus>
+                      <input type="text" class="form-control" name="telepon" value="<?php echo e(isset($object) ? $object->telepon : old('telepon')); ?>" placeholder="telepon" autofocus>
                       <div class="form-control-position">
                         <i class="feather icon-smartphone"></i>
                       </div>
@@ -107,7 +109,7 @@ $actionUrl = route('users.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="email" class="form-control" name="email" value="{{ isset($object) ? $object->email : old('email') }}" placeholder="Email">
+                      <input type="email" class="form-control" name="email" value="<?php echo e(isset($object) ? $object->email : old('email')); ?>" placeholder="Email">
                       <div class="form-control-position">
                         <i class="feather icon-mail"></i>
                       </div>
@@ -129,9 +131,9 @@ $actionUrl = route('users.store');
                         <i class="feather icon-lock"></i>
                       </div>
                     </div>
-                    @if (isset($object))
+                    <?php if(isset($object)): ?>
                     <small class="text-info">Kosongkan jika Anda tidak ingin mengubah kata sandi</small>
-                    @endif
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -149,9 +151,9 @@ $actionUrl = route('users.store');
                         <i class="feather icon-lock"></i>
                       </div>
                     </div>
-                    @if (isset($object))
+                    <?php if(isset($object)): ?>
                     <small class="text-info">Kosongkan jika Anda tidak ingin mengubah kata sandi</small>
-                    @endif
+                    <?php endif; ?>
                   </div>
                 </div>
               </div>
@@ -163,15 +165,15 @@ $actionUrl = route('users.store');
                     </div>
                     <div class="col-md-10">
                         <div class="row">
-                            @foreach ($roles as $role)
+                            <?php $__currentLoopData = $roles; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $role): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-sm-4">
                                 <!-- Default unchecked -->
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" name="roles[]" id="role{{ $role->id }}" value="{{ $role->id }}" {{ isset($user) && $user->roles->pluck('name')->contains($role->name) ? 'checked' : '' }}>
-                                    <label class="custom-control-label" for="role{{ $role->id }}">{{ $role->name }}</label>
+                                    <input type="checkbox" class="custom-control-input" name="roles[]" id="role<?php echo e($role->id); ?>" value="<?php echo e($role->id); ?>" <?php echo e(isset($user) && $user->roles->pluck('name')->contains($role->name) ? 'checked' : ''); ?>>
+                                    <label class="custom-control-label" for="role<?php echo e($role->id); ?>"><?php echo e($role->name); ?></label>
                                 </div>
                             </div>
-                            @endforeach
+                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                         </div>
                     </div>
                 </div>
@@ -189,29 +191,29 @@ $actionUrl = route('users.store');
                       </div>
                       <br>
                       <div class="row">
-                          @foreach ($permissions as $permission)
+                          <?php $__currentLoopData = $permissions; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $permission): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                           <div class="col-sm-12 permissions">
                               <!-- Default unchecked -->
                               <div class="custom-control custom-checkbox">
-                                  <input type="checkbox" class="custom-control-input parent" name="permissions[]" id="{{ str_slug($permission->name) }}" value="{{ $permission->id }}" {{ isset($user) && $user->permissions->pluck('name')->contains($permission->name) ? 'checked' : '' }}>
-                                  <label class="custom-control-label" for="{{ str_slug($permission->name) }}"><strong>{{ $permission->name }}</strong></label>
+                                  <input type="checkbox" class="custom-control-input parent" name="permissions[]" id="<?php echo e(str_slug($permission->name)); ?>" value="<?php echo e($permission->id); ?>" <?php echo e(isset($user) && $user->permissions->pluck('name')->contains($permission->name) ? 'checked' : ''); ?>>
+                                  <label class="custom-control-label" for="<?php echo e(str_slug($permission->name)); ?>"><strong><?php echo e($permission->name); ?></strong></label>
                               </div>
                               <br>
-                              @if ($permission->childs()->count() > 0)
-                                  <div class="row mb-2 {{ str_slug($permission->name) }}">
-                                      @foreach ($permission->childs as $child)
+                              <?php if($permission->childs()->count() > 0): ?>
+                                  <div class="row mb-2 <?php echo e(str_slug($permission->name)); ?>">
+                                      <?php $__currentLoopData = $permission->childs; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $child): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                       <div class="col-md-4">
                                           <div class="custom-control custom-checkbox">
-                                              <input type="checkbox" class="custom-control-input" name="permissions[]" id="{{ $child->id }}" value="{{ $child->id }}" {{ isset($user) && $user->permissions->pluck('name')->contains($child->name) ? 'checked' : '' }}>
-                                              <label class="custom-control-label" for="{{ $child->id }}">{{ $child->name }}</label>
+                                              <input type="checkbox" class="custom-control-input" name="permissions[]" id="<?php echo e($child->id); ?>" value="<?php echo e($child->id); ?>" <?php echo e(isset($user) && $user->permissions->pluck('name')->contains($child->name) ? 'checked' : ''); ?>>
+                                              <label class="custom-control-label" for="<?php echo e($child->id); ?>"><?php echo e($child->name); ?></label>
                                           </div>
                                       </div>
-                                      @endforeach
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                   </div>
-                              @endif
+                              <?php endif; ?>
                           </div>
                           <hr>
-                          @endforeach
+                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                       </div>
                   </div>
               </div>
@@ -228,8 +230,8 @@ $actionUrl = route('users.store');
     </form>
   </div>
 
-{{-- Detail User --}}
-  @if (isset($object))
+
+  <?php if(isset($object)): ?>
   <div class="col-md-4">
     <div class="card">
       <div class="card-header">
@@ -238,34 +240,34 @@ $actionUrl = route('users.store');
       <br>
       <div class="card-body">
         <div class="text-center">
-          <img src="{{ $object->photo_url }}" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
+          <img src="<?php echo e($object->photo_url); ?>" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
         </div>
         <br>
 
-        @php
+        <?php
         $details = [
         'name' => 'Name',
         'email' => 'Email',
         ];
-        @endphp
+        ?>
 
-        @foreach ($details as $key => $label)
+        <?php $__currentLoopData = $details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
         <div class="mt-1">
-          <h6 class="mb-0">{{ $label }}:</h6>
-          <p>{{ !is_null($object->$key) ? $object->$key : '-' }}</p>
+          <h6 class="mb-0"><?php echo e($label); ?>:</h6>
+          <p><?php echo e(!is_null($object->$key) ? $object->$key : '-'); ?></p>
         </div>
-        @endforeach
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
       </div>
     </div>
   </div>
-  @endif
-{{-- Detail User --}}
+  <?php endif; ?>
+
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
 
-@push('after_scripts')
+<?php $__env->startPush('after_scripts'); ?>
 <script>
   $('#permission_all').change(function() {
     if($(this).is(":checked")) {
@@ -296,4 +298,6 @@ $actionUrl = route('users.store');
     checkUserType();
   });
 </script>
-@endpush
+<?php $__env->stopPush(); ?>
+
+<?php echo $__env->make('layouts.app', $viewData, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\libraryc\resources\views/admin/user/form.blade.php ENDPATH**/ ?>

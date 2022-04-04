@@ -102,7 +102,7 @@ $actionUrl = route('anggota.store');
 
               <div class="col-md-2"></div>
               <div class="col-md-10">
-                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Save</button>
+                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Simpan</button>
               </div>
             </div>
           </div>

@@ -105,6 +105,19 @@ class PagesController extends Controller
     //     return view('beranda', $sisa, $data);
     // }
 
+    public function sisa()
+    {
+        $auth = Auth::user()->id;
+        $data = Transaksi::with('buku')->where('user_id', $auth)->get();
+
+        $tgl_pinjam = Transaksi::with('buku')->select('tgl_pinjam')->where('user_id', $auth)->get();
+        $tgl_hrs_kembali = Transaksi::with('buku')->select('tgl_hrs_kembali')->where('user_id', $auth)->get();
+
+        $sisa = $tgl_hrs_kembali - $tgl_pinjam;
+
+        return view('beranda', compact('data', 'sisa'));
+    }
+
     // public function setKategori()
     // {
     //     $bukus = Buku::all();

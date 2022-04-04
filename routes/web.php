@@ -19,7 +19,7 @@ route::get('/menu', 'PagesController@index')->name('menu');
 route::get('/beranda', 'PagesController@beranda')->name('beranda');
 Route::get('/detailbuku', 'PagesController@detail')->name('detailbuku');
 Route::get('/detailbuku/{id}','PagesController@show')->name('show');
-Route::get('/info','PagesController@info')->name('info');
+Route::get('/sisa','PagesController@sisa')->name('sisa');
 
 route::get('/buku', 'PagesController@buku')->name('buku');
 

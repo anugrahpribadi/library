@@ -5,18 +5,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" href="{{ asset('app-assets/images/ico/apple-icon-120.png') }}">
-    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('app-assets/images/logo/vuesax-logo.png') }}">
+    <link rel="apple-touch-icon" href="<?php echo e(asset('app-assets/images/ico/apple-icon-120.png')); ?>">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('app-assets/images/logo/vuesax-logo.png')); ?>">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600" rel="stylesheet">
 
     <title>MyLibrary</title>
 
     <!-- BEGIN: Vendor CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/vendors.min.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/vendors/css/ui/prism.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/css/vendors.min.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/vendors/css/ui/prism.min.css')); ?>">
     <!-- END: Vendor CSS-->
 
-    @include('inc.alert')
+    <?php echo $__env->make('inc.alert', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
 
@@ -33,19 +33,19 @@
     <!-- BEGIN: Theme CSS-->
 
     <link rel="stylesheet" href="/app-assets/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/bootstrap-extended.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/colors.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/components.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/dark-layout.css') }}">
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/themes/semi-dark-layout.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/bootstrap.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/bootstrap-extended.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/colors.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/components.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/dark-layout.css')); ?>">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/semi-dark-layout.css')); ?>">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('app-assets/css/core/menu/menu-types/vertical-menu.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/core/menu/menu-types/vertical-menu.css')); ?>">
     <!-- END: Page CSS-->
 
 
@@ -54,111 +54,82 @@
     <!-- Select2 Bootstrap theme CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <style>
-        * {}
-
-        body {
-            margin: 0;
-        }
-
-        .navbar {
-
-            position: fixed;
-            position: left;
-            z-index: 99;
-            width: 100%;
-
-
-            background-color: blue;
-        }
-
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                height: auto;
-            }
-        }
-    </style>
-
     <!-- BEGIN: Custom CSS-->
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <!-- END: Custom CSS-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- <nav class="navbar navbar-dark bg-primary"> -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <!-- <nav class="navbar navbar-expand-lg navbar-white bg-white"> -->
+
+    <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="http://127.0.0.1:8000/menu">
 
                 <img src="/img/logo.png" style="width: 70px; height: 35px;" alt="">
                 <!-- <h2 class="brand-text mb-0">MyLibrary</h2> -->
-                <p class="navbar-brand" style="font-family: Geneva;">MyLibrary</p>
             </a>
-            <!-- <a class="navbar-brand" href="http://127.0.0.1:8000/menu">MyLibrary</a> -->
+            <a class="navbar-brand" href="http://127.0.0.1:8000/menu">MyLibrary</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     &ensp;
-                    @if (Auth::guest())
+                    <?php if(Auth::guest()): ?>
                     <!-- <li class="nav-item">
-        <a class="nav-link btn btn-primary" href="{{ route('home') }}" style="pointer-events: none;cursor: default;">Dashboard</a>
+        <a class="nav-link btn btn-primary" href="<?php echo e(route('home')); ?>" style="pointer-events: none;cursor: default;">Dashboard</a>
     </li> -->
                     <!-- <li class="nav-item">
                         <a class="nav-link btn btn-primary" aria-current="page" href="http://127.0.0.1:8000">Home</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('beranda') }}">Beranda</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
                     </li>
                     &ensp;
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('menu') }}">Buku</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
                     </li>
-                    @else
-                    @can('dashboard')
+                    <?php else: ?>
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('home') }}">Dashboard</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('home')); ?>">Dashboard</a>
                     </li>
-                    @endcan
+                    <?php endif; ?>
                     &ensp;
-                    @can('beranda')
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('beranda')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('beranda') }}">Beranda</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
                     </li>
-                    @endcan
+                    <?php endif; ?>
                     &ensp;
-                    @can('book')
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('book')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('menu') }}">Buku</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
                     </li>
-                    @endcan
+                    <?php endif; ?>
                     &ensp;
-                    @can('histori')
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('histori')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="{{ route('histori') }}">Riwayat</a>
+                        <a class="nav-link btn btn-primary" href="<?php echo e(route('histori')); ?>">Riwayat</a>
                     </li>
-                    @endcan
-                    @endif
+                    <?php endif; ?>
+                    <?php endif; ?>
                 </ul>
             </div>
 
-
+            
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
-                        <input type="text" class="form-control" id="cari" style="width: 300px;" name="cari" placeholder="Judul /Penulis /Kategori" value="{{ old('cari') }}">
+                        <input type="text" class="form-control" id="cari" style="width: 300px;" name="cari" placeholder="Judul /Penulis /Kategori" value="<?php echo e(old('cari')); ?>">
                     </ul>
                 </form>
             </div>
 
-
+            
             <!-- <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Panduan Pengguna
             </button> -->
-
+            
             <!-- Modal -->
             <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-xl">
@@ -195,29 +166,30 @@
                     </div>
                 </div>
             </div> -->
-
+            
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
             &ensp;
-
+            
             <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <input class="typeahead form-control" type="text">
                 </ul> -->
             <ul class="nav navbar-nav float-right">
-                <li class="dropdown dropdown-user nav-item">
-                    @if (Auth::guest())
-                    <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
-                    @else
-                    <div class="dropdown">
-                        Halo, {{ Auth::user()->name }}
-                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="feather icon-edit"></i> Edit Profile</a>
-                            <a class="dropdown-item" href="{{ url('/logout') }}"><i class="feather icon-log-out"></i> Logout</a>
-                        </div>
+            <li class="dropdown dropdown-user nav-item">
+                <?php if(Auth::guest()): ?>
+                <a href="<?php echo e(route('login')); ?>" class="btn btn-outline-primary">Login</a>
+                <?php else: ?>
+                <div class="dropdown">
+                    Halo, <?php echo e(Auth::user()->name); ?>
+
+                    <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo e(route('profile.edit')); ?>"><i class="feather icon-edit"></i> Edit Profile</a>
+                        <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i class="feather icon-log-out"></i> Logout</a>
                     </div>
-                    @endif
-                </li>
+                </div>
+                <?php endif; ?>
+            </li>
             </ul>
 
         </div>
@@ -228,8 +200,9 @@
 </head>
 
 <body>
+    <hr>
     <br>
-    @yield('content')
+    <?php echo $__env->yieldContent('content'); ?>
 </body>
 
-</html>
+</html><?php /**PATH C:\xampp\htdocs\library\resources\views/layouts/nav.blade.php ENDPATH**/ ?>

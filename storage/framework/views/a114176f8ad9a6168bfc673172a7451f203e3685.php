@@ -1,11 +1,4 @@
-@extends('layouts.nav', [
-'title' => 'Laporan Pengembalian',
-'breadcrumbs' => [
-'Laporan Pengembalian'
-],
-])
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 
 <!-- <div class="row-md-3">
     <div class="card">
@@ -44,10 +37,16 @@
                     <i class="feather icon-book-open text-primary font-medium-5" button title="Jumlah Buku"></i>
                 </div>
             </div>
-            <h2 class="text-bold-700 mt-1">{{ $buku }}</h2>
+            <h2 class="text-bold-700 mt-1"><?php echo e($buku); ?></h2>
             <p class="mb-100">Total Buku</p>
             <br>
         </div>
     </div>
 </div>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.nav', [
+'title' => 'Laporan Pengembalian',
+'breadcrumbs' => [
+'Laporan Pengembalian'
+],
+], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\libraryc\resources\views/beranda.blade.php ENDPATH**/ ?>
