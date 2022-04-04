@@ -99,6 +99,8 @@
                                             src="/img/default.png" class="img-circle elevation-2" alt="User Image"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
+                                <a class="dropdown-item" href="#"><i
+                                        class="feather icon-edit"></i> Edit Profile</a>
                                 <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i
                                         class="feather icon-log-out"></i> Logout</a>
                                 </div>

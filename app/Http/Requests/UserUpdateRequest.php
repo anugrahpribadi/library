@@ -25,6 +25,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name'      => 'required',
+            'alamat'      => 'required',
+            'telepon'      => 'required',
             'email'     => 'required|email',
             'password'  => 'confirmed',
         ];
@@ -39,6 +41,8 @@ class UserUpdateRequest extends FormRequest
     {
         return [
             'name'  => 'Nama',
+            'alamat'  => 'Alamat',
+            'telepon'  => 'Telepon',
             'email' => 'Email'
         ];
     }

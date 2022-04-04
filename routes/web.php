@@ -32,6 +32,11 @@ Auth::routes(['register' => false]);
 route::get('logout', 'Auth\LoginController@logout')->name('logout');
 route::get('/admin/user', 'Admin\UserController@create')->name('register');
 
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('profile', 'ProfileController@edit')->name('profile.edit');
+    Route::patch('profile', 'ProfileController@update')->name('profile.update');
+});
+
 route::middleware('admin')->group(function () {
     route::get('/histori', 'TransaksiController@histori')->name('histori');
     route::get('/home', 'HomeController@index')->name('home');

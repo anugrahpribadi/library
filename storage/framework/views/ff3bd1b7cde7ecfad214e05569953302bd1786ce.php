@@ -40,6 +40,10 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/dark-layout.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/themes/semi-dark-layout.css')); ?>">
 
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/core/menu/menu-types/vertical-menu.css')); ?>">
     <!-- END: Page CSS-->
@@ -122,12 +126,12 @@
             </div>
 
             
-            <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <!-- <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Panduan Pengguna
-            </button>
+            </button> -->
             
             <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-xl">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -161,7 +165,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> -->
             
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
@@ -171,15 +175,23 @@
                 <input class="typeahead form-control" type="text">
                 </ul> -->
             <ul class="nav navbar-nav float-right">
+            <li class="dropdown dropdown-user nav-item">
                 <?php if(Auth::guest()): ?>
                 <a href="<?php echo e(route('login')); ?>" class="btn btn-outline-primary">Login</a>
                 <?php else: ?>
-                Halo, <?php echo e(Auth::user()->name); ?>
+                <div class="dropdown">
+                    Halo, <?php echo e(Auth::user()->name); ?>
 
-                &ensp;
-                <a href="<?php echo e(route('logout')); ?>" class="badge bg-danger">Logout</a>
+                    <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="<?php echo e(route('profile.edit')); ?>"><i class="feather icon-edit"></i> Edit Profile</a>
+                        <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i class="feather icon-log-out"></i> Logout</a>
+                    </div>
+                </div>
                 <?php endif; ?>
+            </li>
             </ul>
+
         </div>
         </div>
 

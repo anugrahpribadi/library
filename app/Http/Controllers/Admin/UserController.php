@@ -73,6 +73,8 @@ class UserController extends Controller
         $query = User::select([
             'id', 
             'name', 
+            'alamat', 
+            'telepon', 
             'email', 
             'created_at'
         ])->withCount('roles')->orderBy('roles_count', 'desc');
@@ -250,6 +252,8 @@ class UserController extends Controller
     // {
     //     $payload =  request()->only([
     //         'name',
+    //         'alamat',
+    //         'telepon',
     //         'email',
     //         'password',
     //     ]);

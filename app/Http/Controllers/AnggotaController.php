@@ -74,8 +74,6 @@ class AnggotaController extends Controller
             'id',
             'kode',
             'name',
-            'alamat',
-            'telepon',
             'email',
             'created_at'
         ]);
@@ -187,8 +185,6 @@ class AnggotaController extends Controller
         $payload =  $request->only([
             'kode',
             'name',
-            'alamat',
-            'telepon',
             'email',
         ]); 
 

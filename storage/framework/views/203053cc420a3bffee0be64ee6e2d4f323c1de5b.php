@@ -1,4 +1,4 @@
-@php
+<?php
 if (isset($object)) {
 $viewData = [
 'title' => 'Edit anggota',
@@ -17,33 +17,35 @@ $viewData = [
 ]
 ];
 }
-@endphp
+?>
 
-@extends('layouts.app', $viewData)
 
-@section('content')
-{{-- Form Start --}}
-@php
+
+<?php $__env->startSection('content'); ?>
+
+<?php
 if (isset($object)) {
 $actionUrl = route('anggota.update', $object->id);
 } else {
 $actionUrl = route('anggota.store');
 }
-@endphp
+?>
 <div class="row">
-  <div class="{{ isset($object) ? "col-md-8" : "col-md-12" }}">
-    <form action="{{ $actionUrl }}" method="POST" enctype="multipart/form-data">
+  <div class="<?php echo e(isset($object) ? "col-md-8" : "col-md-12"); ?>">
+    <form action="<?php echo e($actionUrl); ?>" method="POST" enctype="multipart/form-data">
 
-      @if (isset($object))
-      {{ method_field('PATCH') }}
-      <input type="hidden" name="user_id" value="{{ $object->id }}" />
-      @endif
+      <?php if(isset($object)): ?>
+      <?php echo e(method_field('PATCH')); ?>
 
-      {{ csrf_field() }}
+      <input type="hidden" name="user_id" value="<?php echo e($object->id); ?>" />
+      <?php endif; ?>
+
+      <?php echo e(csrf_field()); ?>
+
 
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title">{{ $viewData['title'] }}</h4>
+          <h4 class="card-title"><?php echo e($viewData['title']); ?></h4>
         </div>
         <br>
         <div class="card-body">
@@ -75,7 +77,7 @@ $actionUrl = route('anggota.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="name" value="{{ isset($object) ? $object->name : old('name') }}" placeholder="Nama Anggota" autofocus required>
+                      <input type="text" class="form-control" name="name" value="<?php echo e(isset($object) ? $object->name : old('name')); ?>" placeholder="Nama Anggota" autofocus required>
                       <div class="form-control-position">
                         <i class="feather icon-users"></i>
                       </div>
@@ -91,7 +93,7 @@ $actionUrl = route('anggota.store');
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="email" class="form-control" name="email" value="{{ isset($object) ? $object->email : old('email') }}" placeholder="Email Anggota" required>
+                      <input type="email" class="form-control" name="email" value="<?php echo e(isset($object) ? $object->email : old('email')); ?>" placeholder="Email Anggota" required>
                       <div class="form-control-position">
                         <i class="feather icon-mail"></i>
                       </div>
@@ -112,4 +114,5 @@ $actionUrl = route('anggota.store');
   </div>
 </div>
 
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', $viewData, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/anggota/form.blade.php ENDPATH**/ ?>

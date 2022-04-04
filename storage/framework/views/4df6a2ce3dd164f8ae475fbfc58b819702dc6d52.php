@@ -73,6 +73,38 @@ $actionUrl = route('users.store');
               <div class="col-12">
                 <div class="form-group row">
                   <div class="col-md-2">
+                    <span>Alamat</span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="position-relative has-icon-left">
+                      <input type="text" class="form-control" name="alamat" value="<?php echo e(isset($object) ? $object->alamat : old('alamat')); ?>" placeholder="Alamat" autofocus>
+                      <div class="form-control-position">
+                        <i class="feather icon-home"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="col-md-2">
+                    <span>Telepon</span>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="position-relative has-icon-left">
+                      <input type="text" class="form-control" name="telepon" value="<?php echo e(isset($object) ? $object->telepon : old('telepon')); ?>" placeholder="telepon" autofocus>
+                      <div class="form-control-position">
+                        <i class="feather icon-smartphone"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-12">
+                <div class="form-group row">
+                  <div class="col-md-2">
                     <span>Email</span>
                   </div>
                   <div class="col-md-10">
@@ -100,7 +132,7 @@ $actionUrl = route('users.store');
                       </div>
                     </div>
                     <?php if(isset($object)): ?>
-                    <small class="text-info">Leave it blank if you don't want to change password.</small>
+                    <small class="text-info">Biarkan kosong jika Anda tidak ingin mengubah kata sandi</small>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -120,7 +152,7 @@ $actionUrl = route('users.store');
                       </div>
                     </div>
                     <?php if(isset($object)): ?>
-                    <small class="text-info">Leave it blank if you don't want to change password.</small>
+                    <small class="text-info">Biarkan kosong jika Anda tidak ingin mengubah kata sandi</small>
                     <?php endif; ?>
                   </div>
                 </div>

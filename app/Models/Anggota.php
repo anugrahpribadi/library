@@ -14,8 +14,8 @@ class Anggota extends Model
     protected $fillable = [
         'kode',
         'name',
-        'alamat',
-        'telepon',
+        'alamat_id',
+        'telepon_id',
         'email',
     ];
 
@@ -50,10 +50,15 @@ class Anggota extends Model
     {
         return $this->hasMany(\App\Models\Transaksi::class);
     }
-
-    public function denda()
+    
+    // public function denda()
+    // {
+        //     return $this->hasMany(\App\Denda::class, 'denda_id', 'id');
+        // }
+        
+    public function name()
     {
-        return $this->hasMany(\App\Denda::class, 'denda_id', 'id');
+        return $this->hasMany(\App\Models\User::class, 'name', 'id');
     }
 
     // public function histori(){
