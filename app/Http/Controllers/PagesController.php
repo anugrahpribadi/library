@@ -43,8 +43,9 @@ class PagesController extends Controller
     public function beranda()
     {
         $buku = Buku::all()->count();
+        $kategori = Kategori::all()->count();
 
-        return view('beranda', compact('buku'));
+        return view('beranda', compact('buku', 'kategori'));
     }
 
     public function detail()
@@ -118,14 +119,16 @@ class PagesController extends Controller
         return view('beranda', compact('data', 'sisa'));
     }
 
-    // public function setKategori()
-    // {
-    //     $bukus = Buku::all();
-    //     $kategoris = Kategori::pluck('nama', 'kategori_id');
-    //     // $data['kategoris'] = Kategori::with('buku')->select(['id', 'nama'])->get();
+    public function setKategori()
+    {
+        // $bukus = Buku::all();
+        $kategori = $this->request->getVar('kategori');
+        $currentPage = $this->request->getVar('menu') ? $this->request->getVar('menu') : 1;
+        // $kategoris = Kategori::pluck('nama', 'kategori_id');
+        // $data['kategoris'] = Kategori::with('buku')->select(['id', 'nama'])->get();
 
-    //     return view ('layouts.nav', compact('bukus', 'kategoris'));
-    // }
+        // return view ('menu', compact('bukus', 'kategoris'));
+    }
 
     // public function kategoriAjax($id)
     // {

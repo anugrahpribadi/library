@@ -47,6 +47,7 @@
           <div class="card-body">
             <h6>{{ $b->penulis }}</h6>
             <h4><b>{{ $b->judul }}</b></h4>
+            <h6>{{ $b->kategori->nama }}</h6>
             @if (Auth::guest())
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
               Detail
@@ -81,6 +82,26 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#kategori').change(function(){
+      kategori();
+    })
+  })
+
+  function buku()
+  {
+    var kategori = $('#kategori').val();
+    $.ajax({
+      url: '{!! route('setKategori',) !!}',
+      data: "kategori=" + kategori,
+      success: function(data) {
+        $("#bukuTable tbody").html(data);
+      }
+    })
+  }
+</script>
 
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 

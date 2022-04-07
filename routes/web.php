@@ -18,6 +18,7 @@ Route::get('/', function () {
 route::get('/menu', 'PagesController@index')->name('menu');
 route::get('/beranda', 'PagesController@beranda')->name('beranda');
 Route::get('/detailbuku', 'PagesController@detail')->name('detailbuku');
+Route::get('/buku/setKategori', 'PagesController@setKategori')->name('setKategori');
 Route::get('/detailbuku/{id}','PagesController@show')->name('show');
 Route::get('/sisa','PagesController@sisa')->name('sisa');
 

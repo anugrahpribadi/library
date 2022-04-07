@@ -216,25 +216,25 @@ class TransaksiController extends Controller
     }
 
 
-    public function laporan(Request $request)
-    {
-        if (!auth()->user()->can('list pinjam')) {
-            abort(403);
-        }
+    // public function laporan(Request $request)
+    // {
+    //     if (!auth()->user()->can('list pinjam')) {
+    //         abort(403);
+    //     }
 
-        $data = Transaksi::onlyTrashed()->get();
-        return view('laporan', compact('data'));
-    }
+    //     $data = Transaksi::onlyTrashed()->get();
+    //     return view('laporan', compact('data'));
+    // }
 
-    public function periodepengembalian(Request $request)
-    {
-        $tgl_awal = $request->tgl_awal;
-        $tgl_akhir = $request->tgl_akhir;
-        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->onlyTrashed()->get();
+    // public function periodepengembalian(Request $request)
+    // {
+    //     $tgl_awal = $request->tgl_awal;
+    //     $tgl_akhir = $request->tgl_akhir;
+    //     $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->onlyTrashed()->get();
 
-        $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
-        return view('laporan', compact('title', 'data'));
-    }
+    //     $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
+    //     return view('laporan', compact('title', 'data'));
+    // }
 
     public function cetakpeminjaman()
     {
@@ -254,12 +254,11 @@ class TransaksiController extends Controller
 
     public function periodepinjam(Request $request)
     {
-        $tgl_awal = date('Y-m-d', strtotime($request->tgl_awal));
-        $tgl_akhir = date('Y-m-d', strtotime($request->tgl_awal));
-        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal . '00:00:01')->where('tgl_pinjam', '<=', $tgl_akhir . '23:59:59')->withTrashed()->get();
+        $tgl_awal = $request->tgl_awal;
+        $tgl_akhir = $request->tgl_akhir;
+        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->withTrashed()->get();
 
-        $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
-        return view('pinjam', compact('title', 'data'));
+        return view('pinjam', $data);
     }
 
     public function cetakpengembalian()

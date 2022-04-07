@@ -9,6 +9,19 @@
     ]) ? 'active' : '' }} nav-item"><a href="{{ route('users.index') }}"><i class="feather icon-users"></i><span class="menu-title">Users </span></a></li>
     @endcan
 
+    @can('permission')
+    <li class="nav-item has-sub "><a href="#"><i class="feather icon-database"></i><span class="menu-title">Role and Permission</span></a>
+        <ul class="menu-content">
+            <li class="{{ in_array(\Request::route()->getName(), [
+                'acl.role.index',
+            ]) ? 'active' : '' }} nav-item"><a href="{{ route('acl.role.index') }}"><i class="feather icon-log-in"></i><span class="menu-item">Role</span></a></li>
+            <li class="{{ in_array(\Request::route()->getName(), [
+                'acl.permission.index',
+            ]) ? 'active' : '' }} nav-item"><a href="{{ route('acl.permission.index') }}"><i class="feather icon-log-out"></i><span class="menu-item">Permission</span></a></li>
+        </ul>
+    </li>
+    @endcan
+
     @can('transaksi')
     <li class="{{ in_array(\Request::route()->getName(), [
         'transaksi.index',
@@ -31,7 +44,7 @@
         'kategori.index',
         'kategori.create',
         'kategori.edit',
-    ]) ? 'active' : '' }} nav-item"><a href="{{ route('kategori.index') }}"><i class="feather icon-database"></i><span class="menu-title">Kategori </span></a></li>
+    ]) ? 'active' : '' }} nav-item"><a href="{{ route('kategori.index') }}"><i class="feather icon-grid"></i><span class="menu-title">Kategori </span></a></li>
     @endcan
 
     <!-- @can('listkategori')
@@ -47,18 +60,7 @@
             </li>
         </ul>
     </li> -->
-    @can('permission')
-    <li class="nav-item has-sub "><a href="#"><i class="feather icon-file-text"></i><span class="menu-title">Role and Permission</span></a>
-        <ul class="menu-content">
-            <li class="{{ in_array(\Request::route()->getName(), [
-                'acl.role.index',
-            ]) ? 'active' : '' }} nav-item"><a href="{{ route('acl.role.index') }}"><i class="feather icon-log-in"></i><span class="menu-item">Role</span></a></li>
-            <li class="{{ in_array(\Request::route()->getName(), [
-                'acl.permission.index',
-            ]) ? 'active' : '' }} nav-item"><a href="{{ route('acl.permission.index') }}"><i class="feather icon-log-out"></i><span class="menu-item">Permission</span></a></li>
-        </ul>
-    </li>
-    @endcan
+    
 
     @can("anggota")
     <li class="{{ in_array(\Request::route()->getName(), [
