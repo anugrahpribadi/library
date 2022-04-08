@@ -1,18 +1,18 @@
 <?php
 if (isset($object)) {
 $viewData = [
-'title' => 'Edit anggota',
+'title' => 'Edit kategori',
 'breadcrumbs' => [
-'Anggota',
+'kategori',
 $object->email,
 'Edit',
 ],
 ];
 } else {
 $viewData = [
-'title' => 'Tambah Anggota',
+'title' => 'Tambah kategori',
 'breadcrumbs' => [
-'Anggota',
+'kategori',
 'Tambah',
 ]
 ];
@@ -25,9 +25,9 @@ $viewData = [
 
 <?php
 if (isset($object)) {
-$actionUrl = route('anggota.update', $object->id);
+$actionUrl = route('kategori.update', $object->id);
 } else {
-$actionUrl = route('anggota.store');
+$actionUrl = route('kategori.store');
 }
 ?>
 <div class="row">
@@ -54,30 +54,14 @@ $actionUrl = route('anggota.store');
           <div class="form-body">
             <div class="row">
 
-              <!-- <div class="col-12">
-                <div class="form-group row">
-                  <div class="col-md-2">
-                    <span>Kode Anggota</span>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="position-relative has-icon-left">
-                      <input type="number" class="form-control" name="kode_anggota" value="" placeholder="Kode Anggota" readonly="">
-                      <div class="form-control-position">
-                        <i class="feather icon-slack"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div class="col-12">
                 <div class="form-group row">
                   <div class="col-md-2">
-                    <span>Nama Anggota</span>
+                    <span>Nama Kategori</span>
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="text" class="form-control" name="name" value="<?php echo e(isset($object) ? $object->name : old('name')); ?>" placeholder="Nama Anggota" autofocus required>
+                      <input type="text" class="form-control" name="nama" value="<?php echo e(isset($object) ? $object->nama : old('nama')); ?>" placeholder="Nama Kategori" autofocus required>
                       <div class="form-control-position">
                         <i class="feather icon-users"></i>
                       </div>
@@ -89,13 +73,13 @@ $actionUrl = route('anggota.store');
               <div class="col-12">
                 <div class="form-group row">
                   <div class="col-md-2">
-                    <span>Email</span>
+                    <span>Lokasi Kategori</span>
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
-                      <input type="email" class="form-control" name="email" value="<?php echo e(isset($object) ? $object->email : old('email')); ?>" placeholder="Email Anggota" required>
+                    <textarea name="lokasi" class="form-control" placeholder="Lokasi Kategori" required><?php echo e(isset($object) ? $object->lokasi : old('lokasi')); ?></textarea>
                       <div class="form-control-position">
-                        <i class="feather icon-mail"></i>
+                        <i class="feather icon-home"></i>
                       </div>
                     </div>
                   </div>
@@ -115,4 +99,4 @@ $actionUrl = route('anggota.store');
 </div>
 
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', $viewData, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/anggota/form.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', $viewData, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/kategori/form.blade.php ENDPATH**/ ?>

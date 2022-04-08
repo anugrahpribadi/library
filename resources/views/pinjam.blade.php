@@ -24,7 +24,7 @@
             </form>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -67,6 +67,7 @@
     $('.dataTable').dataTable({
         processing: true,
         serverSide: false,
+        order: [[ 1, "desc" ]],
         "createdRow": function(row, data, dataTable) {
             if (data.dataa == "") {
                 $(row).addClass('redClass');

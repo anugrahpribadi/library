@@ -99,7 +99,7 @@
                                             src="/img/default.png" class="img-circle elevation-2" alt="User Image"></span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#"><i
+                                <a class="dropdown-item" href="{{ route('profile.edit') }}"><i
                                         class="feather icon-edit"></i> Edit Profile</a>
                                 <a class="dropdown-item" href="{{ url('/logout') }}"><i
                                         class="feather icon-log-out"></i> Logout</a>

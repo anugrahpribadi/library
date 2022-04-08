@@ -27,8 +27,8 @@
             <tr>
                 <th>No</th>
                 <th>Kode Transaksi</th>
-                <th>Kode Buku</th>
-                <th>Kode Anggota</th>
+                <th>Judul Buku</th>
+                <th>Nama User Anggota</th>
                 <th>Tanggal Peminjaman</th>
                 <th>Batas Waktu Pengembalian</th>
             </tr>
@@ -37,7 +37,7 @@
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->kode }}</td>
                 <td>{{ $data->buku_name }}</td>
-                <td>{{ $data->anggota_name }}</td>
+                <td>{{ $data->user_name }}</td>
                 <td>{{ $data->tgl_pinjam }}</td>
                 <td>{{ $data->tgl_hrs_kembali }}</td>
             </tr>
