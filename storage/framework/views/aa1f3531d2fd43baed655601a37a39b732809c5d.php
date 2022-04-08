@@ -77,7 +77,6 @@
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 
 <script>
-    // ketika pengunjung scroll kebawah 20px dari atas dokumen, maka tampilkan tombol scroll-btn
     window.onscroll = function() {
         scrollFunction()
     };
@@ -90,7 +89,6 @@
         }
     }
 
-    // ketika tombol tersebut di klik, maka lakukan scroll keatas laman
     function topFunction() {
         document.body.scrollTop = 0;
         document.documentElement.scrollTop = 0;

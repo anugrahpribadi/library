@@ -57,9 +57,10 @@
     <style>
         * {}
 
+        /* 
         body {
             margin: 0;
-        }
+        } */
 
         .navbar {
 
@@ -67,9 +68,6 @@
             position: left;
             z-index: 99;
             width: 100%;
-
-
-            background-color: blue;
         }
 
         /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -86,7 +84,7 @@
     <!-- END: Custom CSS-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
     <!-- <nav class="navbar navbar-dark bg-primary"> -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbarToggleExternalContent" style="background-color: #93AFD4">
         <!-- <nav class="navbar navbar-expand-lg navbar-white bg-white"> -->
         <div class="container-fluid">
             <a class="navbar-brand" href="http://127.0.0.1:8000/menu">
@@ -110,46 +108,56 @@
                         <a class="nav-link btn btn-primary" aria-current="page" href="http://127.0.0.1:8000">Home</a>
                     </li> -->
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('beranda')); ?>">Beranda</a>
                     </li>
                     &ensp;
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('menu')); ?>">Buku</a>
                     </li>
                     <?php else: ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('home')); ?>">Dashboard</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('home')); ?>">Dashboard</a>
                     </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('beranda')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('beranda')); ?>">Beranda</a>
                     </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('book')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('menu')); ?>">Buku</a>
                     </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('histori')): ?>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('histori')); ?>">Riwayat</a>
+                        <a class="nav-link btn btn-primary btn-lg" href="<?php echo e(route('histori')); ?>">Riwayat</a>
                     </li>
                     <?php endif; ?>
                     <?php endif; ?>
-                </ul>
             </div>
+            </ul>
 
-
+            <div class="col">
+                <select class="form-control select2" name="kategori_id">
+                    <?php
+                    $old = isset($object) ? $object->kategori_id : old('kategori_id');
+                    ?>
+                    <option value="">Semua Kategori</option>
+                    <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                    <option value="<?php echo e($item->id); ?>" <?php echo e($old == $item->id ? 'selected' : ''); ?>><?php echo e($item->nama); ?></option>
+                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                </select>
+            </div>
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
-                        <input type="text" class="form-control" id="cari" style="width: 300px;" name="cari" placeholder="Judul /Penulis /Kategori" value="<?php echo e(old('cari')); ?>">
+                        <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
                     </ul>
                 </form>
             </div>

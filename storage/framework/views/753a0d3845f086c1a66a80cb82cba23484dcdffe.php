@@ -45,6 +45,7 @@
           <div class="card-body">
             <h6><?php echo e($b->penulis); ?></h6>
             <h4><b><?php echo e($b->judul); ?></b></h4>
+            <h6><?php echo e($b->kategori->nama); ?></h6>
             <?php if(Auth::guest()): ?>
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
               Detail
@@ -79,6 +80,26 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#kategori').change(function(){
+      kategori();
+    })
+  })
+
+  function buku()
+  {
+    var kategori = $('#kategori').val();
+    $.ajax({
+      url: '<?php echo route('setKategori',); ?>',
+      data: "kategori=" + kategori,
+      success: function(data) {
+        $("#bukuTable tbody").html(data);
+      }
+    })
+  }
+</script>
 
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 

@@ -10,10 +10,10 @@ $object->email,
 ];
 } else {
 $viewData = [
-'title' => 'Add User',
+'title' => 'Tambah User',
 'breadcrumbs' => [
 'User',
-'Add',
+'Tambah',
 ]
 ];
 }
@@ -132,7 +132,7 @@ $actionUrl = route('users.store');
                       </div>
                     </div>
                     <?php if(isset($object)): ?>
-                    <small class="text-info">Biarkan kosong jika Anda tidak ingin mengubah kata sandi</small>
+                    <small class="text-info">Kosongkan jika Anda tidak ingin mengubah kata sandi</small>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -142,7 +142,7 @@ $actionUrl = route('users.store');
               <div class="col-12">
                 <div class="form-group row">
                   <div class="col-md-2">
-                    <span>Password Conf.</span>
+                    <span>Konfirmasi Password</span>
                   </div>
                   <div class="col-md-10">
                     <div class="position-relative has-icon-left">
@@ -152,7 +152,7 @@ $actionUrl = route('users.store');
                       </div>
                     </div>
                     <?php if(isset($object)): ?>
-                    <small class="text-info">Biarkan kosong jika Anda tidak ingin mengubah kata sandi</small>
+                    <small class="text-info">Kosongkan jika Anda tidak ingin mengubah kata sandi</small>
                     <?php endif; ?>
                   </div>
                 </div>
@@ -221,7 +221,7 @@ $actionUrl = route('users.store');
         
               <div class="col-md-2"></div>
               <div class="col-md-10">
-                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Save</button>
+                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Simpan</button>
               </div>
             </div>
           </div>
@@ -235,18 +235,18 @@ $actionUrl = route('users.store');
   <div class="col-md-4">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">User Detail</h4>
+        <h4 class="card-title">Detail User</h4>
       </div>
       <br>
       <div class="card-body">
         <div class="text-center">
-          <img src="<?php echo e($object->photo_url); ?>" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
+          <img src="" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
         </div>
         <br>
 
         <?php
         $details = [
-        'name' => 'Name',
+        'name' => 'Nama',
         'email' => 'Email',
         ];
         ?>

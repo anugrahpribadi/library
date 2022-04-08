@@ -233,18 +233,18 @@ $actionUrl = route('users.store');
   <div class="col-md-4">
     <div class="card">
       <div class="card-header">
-        <h4 class="card-title">User Detail</h4>
+        <h4 class="card-title">Detail User</h4>
       </div>
       <br>
       <div class="card-body">
         <div class="text-center">
-          <img src="{{ $object->photo_url }}" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
+          <img src="" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
         </div>
         <br>
 
         @php
         $details = [
-        'name' => 'Name',
+        'name' => 'Nama',
         'email' => 'Email',
         ];
         @endphp

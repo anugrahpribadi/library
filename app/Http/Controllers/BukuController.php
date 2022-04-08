@@ -133,6 +133,17 @@ class BukuController extends Controller
         })->rawColumns(['formatted_id', 'kategori_name', 'cover_buku_url', 'baca_buku_url', 'action'])->make();
     }
 
+    public function setKategori()
+    {
+        // $bukus = Buku::all();
+        $kategori = $this->request->getVar('kategori');
+        $currentPage = $this->request->getVar('menu') ? $this->request->getVar('menu') : 1;
+        // $kategoris = Kategori::pluck('nama', 'kategori_id');
+        // $data['kategoris'] = Kategori::with('buku')->select(['id', 'nama'])->get();
+
+        // return view ('menu', compact('bukus', 'kategoris'));
+    }
+
     /**
      * Store a newly created resource in storage.
      *
