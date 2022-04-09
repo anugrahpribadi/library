@@ -29,6 +29,10 @@
 
     <!-- JQuery Ajax -->
 
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/style.css')); ?>">
+    
+
 
     <!-- BEGIN: Theme CSS-->
 
@@ -56,46 +60,20 @@
 
     <style>
         * {}
-
-        body {
-            margin: 0;
-        }
-
-        .navbar {
-
-            position: fixed;
-            position: left;
-            z-index: 99;
-            width: 100%;
-
-
-            background-color: blue;
-        }
-
-        /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-        @media  screen and (max-width: 600px) {
-            .column {
-                width: 100%;
-                height: auto;
-            }
-        }
     </style>
 
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <!-- END: Custom CSS-->
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <!-- <nav class="navbar navbar-dark bg-primary"> -->
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
-        <!-- <nav class="navbar navbar-expand-lg navbar-white bg-white"> -->
+
+    <!-- NAV -->
+    <nav class="navbar navbar-expand-lg navbar-light" id="navbarToggleExternalContent" style="background-color: #93AFD4">
         <div class="container-fluid">
             <a class="navbar-brand" href="http://127.0.0.1:8000/menu">
-
                 <img src="/img/logo.png" style="width: 70px; height: 35px;" alt="">
-                <!-- <h2 class="brand-text mb-0">MyLibrary</h2> -->
                 <p class="navbar-brand" style="font-family: Geneva;">MyLibrary</p>
             </a>
-            <!-- <a class="navbar-brand" href="http://127.0.0.1:8000/menu">MyLibrary</a> -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -103,53 +81,45 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     &ensp;
                     <?php if(Auth::guest()): ?>
-                    <!-- <li class="nav-item">
-        <a class="nav-link btn btn-primary" href="<?php echo e(route('home')); ?>" style="pointer-events: none;cursor: default;">Dashboard</a>
-    </li> -->
-                    <!-- <li class="nav-item">
-                        <a class="nav-link btn btn-primary" aria-current="page" href="http://127.0.0.1:8000">Home</a>
-                    </li> -->
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('beranda')); ?>">Beranda</a>
+                        </li>
                     &ensp;
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('menu')); ?>">Buku</a>
+                        </li>
                     <?php else: ?>
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('dashboard')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('home')); ?>">Dashboard</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('home')); ?>">Dashboard</a>
+                        </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('beranda')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('beranda')); ?>">Beranda</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('beranda')); ?>">Beranda</a>
+                        </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('book')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('menu')); ?>">Buku</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('menu')); ?>">Buku</a>
+                        </li>
                     <?php endif; ?>
                     &ensp;
                     <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('histori')): ?>
-                    <li class="nav-item">
-                        <a class="nav-link btn btn-primary" href="<?php echo e(route('histori')); ?>">Riwayat</a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('histori')); ?>">Riwayat</a>
+                        </li>
                     <?php endif; ?>
                     <?php endif; ?>
-                </ul>
             </div>
-
-
+            </ul>
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
-                    <ul class="nav navbar-nav float-left">
-                        <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul /Penulis" value="<?php echo e(old('cari')); ?>">
+                    <ul class="nav navbar-nav float-left col-sm-10">
+                        <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
                     </ul>
                 </form>
             </div>
@@ -158,19 +128,14 @@
 
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
-            &ensp;
 
-            <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <input class="typeahead form-control" type="text">
-                </ul> -->
             <ul class="nav navbar-nav float-right">
                 <li class="dropdown dropdown-user nav-item">
                     <?php if(Auth::guest()): ?>
-                    <a href="<?php echo e(route('login')); ?>" class="btn btn-outline-primary">Login</a>
+                    <a href="<?php echo e(route('login')); ?>" class="btn btn-info">Login</a>
                     <?php else: ?>
                     <div class="dropdown">
-                        
-                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown">Halo, <?php echo e(Auth::user()->name); ?><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
+                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown">Halo, <?php echo e(Auth::user()->name); ?>&ensp;<span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="<?php echo e(route('profile.edit')); ?>"><i class="feather icon-edit"></i> Edit Profile</a>
                             <a class="dropdown-item" href="<?php echo e(url('/logout')); ?>"><i class="feather icon-log-out"></i> Logout</a>
@@ -184,16 +149,14 @@
         </div>
 
     </nav>
+    <!-- END-NAV -->
 
 </head>
 
 <body>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <?php echo $__env->yieldContent('content'); ?>
+    <div class="body">
+        <?php echo $__env->yieldContent('content'); ?>
+    </div>
 </body>
 
 </html><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/layouts/nav.blade.php ENDPATH**/ ?>

@@ -2,52 +2,23 @@
 
 @section('content')
 @csrf
-
-<style type="text/css">
-  #scroll-btn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: orangered;
-    color: white;
-    cursor: pointer;
-    padding: 15px 19px;
-    border-radius: 100px;
-  }
-
-  #scroll-btn:hover {
-    background-color: blue;
-  }
-
-  .sampel {
-    min-height: 2000px;
-  }
-</style>
-
-<div class="container-md">
-
+<br>
+<div class="container-lg">
   <div class="row">
     <br>
-
     <table id="table" class="display" style="width:100%">
 
       @foreach($buku as $b)
-      <div class="col-md-3" style="max-width: 50rem;">
-        <div class="card mb-3 shadow-lg">
+      <div class="col-md-3 py-9" style="max-width: 50rem;">
+        <div class="card mb-3">
           <br>
           @if($b->cover_buku != null)
-          <img src="{{ \Storage::url($b->cover_buku) }}" style="width: 130px;margin-left: auto;margin-right: auto;height: 170px;" class="card-img-top">
+          <img src="{{ \Storage::url($b->cover_buku) }}" style="" class="card-img-top">
           @endif
           <hr>
           <div class="card-body">
             <h6>{{ $b->penulis }}</h6>
             <h4><b>{{ $b->judul }}</b></h4>
-            <h6>{{ $b->kategori->nama }}</h6>
             @if (Auth::guest())
             <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
               Detail

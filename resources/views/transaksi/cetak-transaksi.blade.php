@@ -51,9 +51,8 @@
     </script>
 
     <div class="container" style="text-align: right;">
-        <p>Bandung,<span id="tanggalwaktu"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <!-- <p>TTD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
-        <img src="img/ttd2.jpeg" alt="" style="width: 200px; height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p>Bandung,<span id="tanggalwaktu"></span></p>
+        <br><br>
         <script>
             var tw = new Date();
             if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
@@ -67,7 +66,7 @@
             var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
             document.getElementById("tanggalwaktu").innerHTML = tanggal+" "+bulanarray[bulan]+" "+tahun;
         </script>
-        <p>Indira Regita Anansyah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>Indira Regita Anansyah</p>
     </div>
 
 </body>

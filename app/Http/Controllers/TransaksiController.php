@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Auth;
 use App\cr;
-use Carbon;
+use App\Order;
+use Carbon\Carbon;
 use App\Models\Buku;
 use App\Models\User;
 use App\Models\Anggota;
@@ -174,25 +175,6 @@ class TransaksiController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    // public function update(Request $request, $id)
-    // {
-    //     $buku['object'] = Transaksi::findOrFail($id);
-    //     // $buku = Transaksi::findOrFail($id);
-    //     $buku = Transaksi::where('id',  $id)->update([
-    //         'status' => 'kembali'
-    //     ]);
-    //     $buku = Buku::where('id', $id)
-    //         ->update([
-    //             'jumlah_buku' => ($buku->buku->jumlah_buku + 1),
-    //         ]);
-    //     // $buku = Buku::where('id', $id)
-    //     //                 ->update([
-    //     //                     'jumlah_buku' => ($id->jumlah_buku + 1),
-    //     //                 ]);
-
-    //     return redirect()->back()->with('status', 'Buku Telah Di Kembalikan');
-    // }
-
     /**
      * Remove the specified resource from storage.
      *
@@ -215,27 +197,6 @@ class TransaksiController extends Controller
         return redirect()->back()->with('status', 'Buku Telah Di Kembalikan');  
     }
 
-
-    // public function laporan(Request $request)
-    // {
-    //     if (!auth()->user()->can('list pinjam')) {
-    //         abort(403);
-    //     }
-
-    //     $data = Transaksi::onlyTrashed()->get();
-    //     return view('laporan', compact('data'));
-    // }
-
-    // public function periodepengembalian(Request $request)
-    // {
-    //     $tgl_awal = $request->tgl_awal;
-    //     $tgl_akhir = $request->tgl_akhir;
-    //     $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->onlyTrashed()->get();
-
-    //     $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
-    //     return view('laporan', compact('title', 'data'));
-    // }
-
     public function cetakpeminjaman()
     {
         $data = Transaksi::withTrashed()->get();
@@ -252,19 +213,30 @@ class TransaksiController extends Controller
         return view('pinjam', compact('data'));
     }
 
-    public function periodepinjam(Request $request)
-    {
-        $tgl_awal = $request->tgl_awal;
-        $tgl_akhir = $request->tgl_akhir;
-        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->withTrashed()->get();
+    public function periode(Request $request){
+        $tanggal_awal = date('Y-m-d',strtotime($request->tanggal_awal));
+        $tanggal_akhir = date('Y-m-d',strtotime($request->tanggal_akhir));
 
-        return view('pinjam', $data);
+        $data = Transaksi::where('tgl_pinjam','>=',$tanggal_awal)->where('tgl_pinjam','<=',$tanggal_akhir)->withTrashed()->get();
+        // dd($data);
+        return view('pinjam',compact('data'));
     }
 
     public function cetakpengembalian()
     {
         $dataa = Transaksi::onlyTrashed()->get();
         return view('laporan/cetak-pengembalian', compact('dataa'));
+    }
+
+    public function cetakLaporan()
+    {
+        return view('cetaklaporan');
+    }
+
+    public function cetakLaporanPertanggal($tglawal, $tglakhir)
+    {
+        $data = Transaksi::withTrashed()->whereBetween('tgl_pinjam',[$tglawal, $tglakhir])->get();
+        return view('laporan/cetak-peminjaman', compact('data'));
     }
 
     public function histori()

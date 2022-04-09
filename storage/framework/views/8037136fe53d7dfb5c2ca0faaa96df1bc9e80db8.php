@@ -1,45 +1,17 @@
 <?php $__env->startSection('content'); ?>
 <?php echo csrf_field(); ?>
-
-<style type="text/css">
-  #scroll-btn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: orangered;
-    color: white;
-    cursor: pointer;
-    padding: 15px 19px;
-    border-radius: 100px;
-  }
-
-  #scroll-btn:hover {
-    background-color: blue;
-  }
-
-  .sampel {
-    min-height: 2000px;
-  }
-</style>
-
-<div class="container-md">
-
+<br>
+<div class="container-lg">
   <div class="row">
     <br>
-
     <table id="table" class="display" style="width:100%">
 
       <?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <div class="col-md-3" style="max-width: 50rem;">
-        <div class="card mb-3 shadow-lg">
+      <div class="col-md-3 py-9" style="max-width: 50rem;">
+        <div class="card mb-3">
           <br>
           <?php if($b->cover_buku != null): ?>
-          <img src="<?php echo e(\Storage::url($b->cover_buku)); ?>" style="width: 130px;margin-left: auto;margin-right: auto;height: 170px;" class="card-img-top">
+          <img src="<?php echo e(\Storage::url($b->cover_buku)); ?>" style="" class="card-img-top">
           <?php endif; ?>
           <hr>
           <div class="card-body">
@@ -79,6 +51,26 @@
     </table>
   </div>
 </div>
+
+<script>
+  $(document).ready(function() {
+    $('#kategori').change(function(){
+      kategori();
+    })
+  })
+
+  function buku()
+  {
+    var kategori = $('#kategori').val();
+    $.ajax({
+      url: '<?php echo route('setKategori',); ?>',
+      data: "kategori=" + kategori,
+      success: function(data) {
+        $("#bukuTable tbody").html(data);
+      }
+    })
+  }
+</script>
 
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 

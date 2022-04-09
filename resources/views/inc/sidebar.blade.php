@@ -79,8 +79,15 @@
     @endcan -->
     
     @can("pinjam")
-    <li class="{{ in_array(\Request::route()->getName(), [
-        'pinjam',
-    ]) ? 'active' : '' }} nav-item"><a href="{{ route('pinjam') }}"><i class="feather icon-file-text"></i><span class="menu-title">Laporan Peminjaman </span></a></li>
+    <li class="nav-item has-sub "><a href="#"><i class="feather icon-file-text"></i><span class="menu-title">Laporan</span></a>
+        <ul class="menu-content">
+            <li class="{{ in_array(\Request::route()->getName(), [
+                'pinjam',
+            ]) ? 'active' : '' }} nav-item"><a href="{{ route('pinjam') }}"><i class="feather icon-file-text"></i><span class="menu-item">Laporan Peminjaman</span></a></li>
+            <li class="{{ in_array(\Request::route()->getName(), [
+                'cetaklaporan',
+            ]) ? 'active' : '' }} nav-item"><a href="{{ route('cetaklaporan') }}"><i class="feather icon-printer"></i><span class="menu-item">Cetak Laporan Peminjaman</span></a></li>
+        </ul>
+    </li>
     @endcan
 </ul>

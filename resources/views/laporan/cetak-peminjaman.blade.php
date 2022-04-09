@@ -22,7 +22,7 @@
             </div>
         </div>
         <hr>
-        <h3><center>Data Laporan Peminjaman</center></h3>
+        <h3><center>Data Laporan Peminjaman dan Pengembalian</center></h3>
         <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
             <tr>
                 <th>No</th>
@@ -31,6 +31,7 @@
                 <th>Nama User Anggota</th>
                 <th>Tanggal Peminjaman</th>
                 <th>Batas Waktu Pengembalian</th>
+                <th>Tanggal Pengembalian</th>
             </tr>
             @foreach($data as $data)
             <tr>
@@ -40,6 +41,11 @@
                 <td>{{ $data->user_name }}</td>
                 <td>{{ $data->tgl_pinjam }}</td>
                 <td>{{ $data->tgl_hrs_kembali }}</td>
+                @if($data->deleted_at == null)
+                <td>Belum Dikembalikan!</td>
+                @else
+                <td>{{ date('d F Y', strtotime($data->deleted_at)) }}</td>
+                @endif
             </tr>
             @endforeach
         </table>
@@ -53,9 +59,8 @@
     </script>
 
     <div class="container" style="text-align: right;">
-        <p>Bandung,<span id="tanggalwaktu"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
-        <!-- <p>TTD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
-        <img src="img/ttd2.jpeg" alt="" style="width: 200px; height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <p>Bandung,<span id="tanggalwaktu"></span></p>
+        <br><br>
         <script>
             var tw = new Date();
             if (tw.getTimezoneOffset() == 0) (a=tw.getTime() + ( 7 *60*60*1000))
@@ -69,7 +74,7 @@
             var bulanarray=new Array("Januari","Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","Nopember","Desember");
             document.getElementById("tanggalwaktu").innerHTML = tanggal+" "+bulanarray[bulan]+" "+tahun;
         </script>
-        <p>Indira Regita Anansyah&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>Indira Regita Anansyah</p>
     </div>
 
 </body>

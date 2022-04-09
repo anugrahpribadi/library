@@ -43,9 +43,10 @@ class PagesController extends Controller
     public function beranda()
     {
         $buku = Buku::all()->count();
-        $kategori = Kategori::all()->count();
+        $ck = Kategori::all()->count();
+        $kategori = Kategori::get();
 
-        return view('beranda', compact('buku', 'kategori'));
+        return view('beranda', compact('buku', 'ck', 'kategori'));
     }
 
     public function detail()

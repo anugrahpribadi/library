@@ -1,16 +1,19 @@
 @extends('layouts.nav')
 
 @section('content')
-<div class="container-md">
+<br>
+<div class="container-lg">
   <a href="{{ route('menu') }}" class="btn btn-primary">Kembali</a>
-  <br><br>
+</div>
+<br>
+<div class="container-md">
   <div class="row">
     <br>
     <div class="card mb-5" style="max-width: 1300px;">
         <div class="row g-0">
           <div class="col-md-4">
             <br>
-            <img src="{{ \Storage::url($buku->cover_buku) }}" style="width: 356px;height: 500px;" class="img-fluid rounded-start" alt="...">
+            <img src="{{ \Storage::url($buku->cover_buku) }}" class="img-fluid rounded-start" alt="...">
           </div>
           <div class="col-md-8">
               <div class="card-body">

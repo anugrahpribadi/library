@@ -43,11 +43,14 @@ Route::group(['middleware' => 'auth'], function () {
 route::middleware('admin')->group(function () {
     route::get('/histori', 'TransaksiController@histori')->name('histori');
     route::get('/home', 'HomeController@index')->name('home');
-    // Route::get('autocomplete', 'BukuController@autocomplete')->name('autocomplete');
-    route::get('/laporan', 'TransaksiController@laporan')->name('laporan');
     route::get('/laporanpengembalian/periode', 'TransaksiController@periodepengembalian')->name('periode_awal');
     route::get('/pinjam', 'TransaksiController@pinjam')->name('pinjam');
     route::get('/laporan/periode', 'TransaksiController@periodepinjam')->name('periode_awal');
+
+    route::get('/cetaklaporan', 'TransaksiController@cetakLaporan')->name('cetaklaporan');
+    route::get('/cetaklaporanpertanggal/{tglawal}/{tglakhir}', 'TransaksiController@cetakLaporanPertanggal')->name('cetaklaporanpertanggal');
+    
+    Route::get('/laporan/periode','Transaksicontroller@periode')->name('periode');
 
     Route::prefix('acl')->name('acl.')->group(function () {
         Route::get('permission', 'Admin\ACLController@permissionList')->name('permission.index');

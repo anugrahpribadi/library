@@ -3,7 +3,7 @@
         <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
             <img src="<?php echo e(asset('app-assets/images/pages/login.png')); ?>" alt="branding logo">
         </div>
-        <div class="col-lg-6 col-12 p-0">
+        <div class="col-lg-6 col-12 p-0 align-self-center">
             <div class="card rounded-0 mb-0 px-2">
                 <div class="card-header pb-1">
                     <div class="card-title">
@@ -53,9 +53,6 @@
                         </form>
                     </div>
                 </div>
-                <!-- <div class="container">
-                    <a href="<?php echo e('register'); ?>">Registrasi / Daftar</a>
-                </div> -->
                 <div class="login-footer">
                     <div class="divider">
                         <div class="divider-text">Copyright <?php echo e(date('Y')); ?></div>
