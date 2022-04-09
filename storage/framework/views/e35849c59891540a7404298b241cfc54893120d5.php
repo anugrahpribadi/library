@@ -2,8 +2,6 @@
 <section id="dashboard-analytics">
 
 <div class="row">
-
-        <?php if(auth()->user()->name == "Pustakawan"): ?>
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -33,7 +31,6 @@
                 </div>
             </div>
         </div>
-        <?php endif; ?>
 
         <div class="col-md-3">
             <div class="card">
@@ -50,7 +47,6 @@
             </div>
         </div>
 
-        
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -65,9 +61,7 @@
                 </div>
             </div>
         </div>
-        
 
-        
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -82,7 +76,6 @@
                 </div>
             </div>
         </div>
-        
 
         <!-- <div class="col-md-3">
             <div class="card">
@@ -158,7 +151,7 @@
             </div>
         </div> -->
 
-        
+        <?php if(auth()->user()->name == "Admin"): ?>
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -173,7 +166,7 @@
                 </div>
             </div>
         </div>
-        
+        <?php endif; ?>
 
 </div>
 </section>

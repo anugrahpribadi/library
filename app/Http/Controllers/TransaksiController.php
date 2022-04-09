@@ -111,8 +111,6 @@ class TransaksiController extends Controller
         })->addColumn('action', function ($transaksi) {
             $string = '';
 
-            // $string .= '<a href="' . route('transaksi.edit', $item->id) . '"><button title="dikembalikan" class="btn btn-icon btn-sm btn-success waves-effect waves-light" style="margin-right: 5px;"><i class="feather icon-check"></i></button></a>';
-
             $string .= '<button title="Pengembalian" class="btn btn-icon btn-sm btn-primary waves-effect waves-light delete">Dikembalikan</button>';
             $string .= '<form action="' . route('transaksi.destroy', $transaksi->id) . '" method="POST">' . method_field('delete') . csrf_field() . '</form>';
 
@@ -148,52 +146,6 @@ class TransaksiController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        if (!auth()->user()->can('edit transaksi')) {
-            abort(403);
-        }
-
-        $data['object'] = Transaksi::findOrFail($id);
-        // $data['anggota'] = Transaksi::with('anggota')->get();
-        // $data['buku'] = Transaksi::with('buku')->get();
-
-        return view('transaksi.pengembalian', $data);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\cr  $cr
-     * @return \Illuminate\Http\Response
-     */
-
-    // public function update(Request $request, $id)
-    // {
-    //     $buku['object'] = Transaksi::findOrFail($id);
-    //     // $buku = Transaksi::findOrFail($id);
-    //     $buku = Transaksi::where('id',  $id)->update([
-    //         'status' => 'kembali'
-    //     ]);
-    //     $buku = Buku::where('id', $id)
-    //         ->update([
-    //             'jumlah_buku' => ($buku->buku->jumlah_buku + 1),
-    //         ]);
-    //     // $buku = Buku::where('id', $id)
-    //     //                 ->update([
-    //     //                     'jumlah_buku' => ($id->jumlah_buku + 1),
-    //     //                 ]);
-
-    //     return redirect()->back()->with('status', 'Buku Telah Di Kembalikan');
-    // }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\cr  $cr
@@ -215,27 +167,6 @@ class TransaksiController extends Controller
         return redirect()->back()->with('status', 'Buku Telah Di Kembalikan');  
     }
 
-
-    // public function laporan(Request $request)
-    // {
-    //     if (!auth()->user()->can('list pinjam')) {
-    //         abort(403);
-    //     }
-
-    //     $data = Transaksi::onlyTrashed()->get();
-    //     return view('laporan', compact('data'));
-    // }
-
-    // public function periodepengembalian(Request $request)
-    // {
-    //     $tgl_awal = $request->tgl_awal;
-    //     $tgl_akhir = $request->tgl_akhir;
-    //     $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->onlyTrashed()->get();
-
-    //     $title = "List laporan dari tanggal $tgl_awal sampai tanggal $tgl_akhir";
-    //     return view('laporan', compact('title', 'data'));
-    // }
-
     public function cetakpeminjaman()
     {
         $data = Transaksi::withTrashed()->get();
@@ -252,29 +183,55 @@ class TransaksiController extends Controller
         return view('pinjam', compact('data'));
     }
 
-    public function periodepinjam(Request $request)
+    public function cari(Request $request)
     {
-        $tgl_awal = $request->tgl_awal;
-        $tgl_akhir = $request->tgl_akhir;
-        $data = Transaksi::where('tgl_pinjam', '>=', $tgl_awal)->where('tgl_pinjam', '<=', $tgl_akhir)->withTrashed()->get();
+        // menangkap data pencarian
+        $cari = $request->cari;            
+            
+        // mengambil data dari table transaksi sesuai pencarian data
+        $data = DB::table('transaksis')
+        ->where('tgl_pinjam', 'like', "%" . $cari . "%")
+        ->orWhere('tgl_hrs_kembali', 'like', "%" . $cari . "%")
+        ->paginate(5);
 
+        // mengirim data transaksi ke view index
         return view('pinjam', $data);
     }
 
-    public function cetakpengembalian()
+    public function baru()
     {
-        $dataa = Transaksi::onlyTrashed()->get();
-        return view('laporan/cetak-pengembalian', compact('dataa'));
+        $data = Transaksi::withTrashed()->orderBy('tgl_pinjam', 'desc')->get();
+
+        return view('pinjam', compact('data'));
+    }
+
+    public function lama()
+    {
+        $data = Transaksi::withTrashed()->orderBy('tgl_pinjam', 'asc')->get();
+
+        return view('pinjam', compact('data'));
     }
 
     public function histori()
     {
         $auth = Auth::user()->id;
-        // $buku = Buku::with('transaksi')->get();
-        // $user = DB::table("transaksis")->where("user_id",Auth::user()->id);
-        // $data = DB::select("select * from transaksis where user_id = '$auth'");
-        // $data['buku'] = Buku::get();
         $data = Transaksi::withTrashed()->with('buku')->where('user_id', $auth)->get();
+        return view('histori', compact('data'));
+    }
+
+    public function databaru()
+    {
+        $auth = Auth::user()->id;
+        $data = Transaksi::withTrashed()->with('buku')->where('user_id', $auth)->orderBy('tgl_pinjam', 'desc')->get();
+
+        return view('histori', compact('data'));
+    }
+
+    public function datalama()
+    {
+        $auth = Auth::user()->id;
+        $data = Transaksi::withTrashed()->with('buku')->where('user_id', $auth)->orderBy('tgl_pinjam', 'asc')->get();
+
         return view('histori', compact('data'));
     }
 

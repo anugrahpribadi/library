@@ -147,7 +147,6 @@
                     <ul class="nav navbar-nav float-left">
                         <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="{{ old('cari') }}">
                     </ul>
-                    <button type="submit">cari</button>
                 </form>
                 
             </div>

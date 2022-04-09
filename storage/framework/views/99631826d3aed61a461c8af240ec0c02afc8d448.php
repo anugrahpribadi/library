@@ -1,23 +1,32 @@
 <?php $__env->startSection('content'); ?>
 <div class="card">
     <div class="card-content">
-        <div class="card-body">
+        <di class="card-body">
 
-            <form class="form-inline" action="">
-                <div class="form-group">
-                    <label for=""><b>Tanggal awal : </b></label>
-                    <input name="tgl_awal" type="date" class="form-control ml-1">
-                </div>
-                <div class="form-group">
-                    <label for=""><b>s/d tanggal : </b></label>
-                    <input name="tgl_akhir" type="date" class="form-control ml-1">
-                </div>
-                <button type="submit" class="btn btn-primary ml-1">Oke</button>
+        <!-- <div class="col">
+                <form action="/laporan/cari" method="GET">
+                    <ul class="float-left">
+                        <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
+                    </ul>
+                </form>
+                
+            </div> -->
+
+            <div class="col-md-3">
+            <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
+                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-md-3">
                 <a href="<?php echo e(route('cetak-peminjaman')); ?>" target="_blank" class="btn btn-primary ml-5"><span class="fa fa-print"></span> Cetak</a>
-            </form>
+                </div>
 
             <div class="table-responsive">
-                <table class="table table-bordered table-striped table-hover">
+                <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -56,17 +65,6 @@
 </div>
 <?php $__env->stopSection(); ?>
 
-<script>
-    $('.dataTable').dataTable({
-        processing: true,
-        serverSide: false,
-        "createdRow": function(row, data, dataTable) {
-            if (data.dataa == "") {
-                $(row).addClass('redClass');
-            }
-        }
-    })
-</script>
 <?php echo $__env->make('layouts.app', [
 'title' => 'Laporan Peminjaman',
 'breadcrumbs' => [

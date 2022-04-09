@@ -9,8 +9,6 @@
 <section id="dashboard-analytics">
 
 <div class="row">
-
-        @if (auth()->user()->name == "Pustakawan")
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -40,7 +38,6 @@
                 </div>
             </div>
         </div>
-        @endif
 
         <div class="col-md-3">
             <div class="card">
@@ -57,7 +54,6 @@
             </div>
         </div>
 
-        {{-- @if (auth()->user()->name == "Admin") --}}
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -72,9 +68,7 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
 
-        {{-- @if (auth()->user()->name == "Pustakawan") --}}
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -89,7 +83,6 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
 
         <!-- <div class="col-md-3">
             <div class="card">
@@ -165,7 +158,7 @@
             </div>
         </div> -->
 
-        {{-- @if (auth()->user()->name == "Admin") --}}
+        @if (auth()->user()->name == "Admin")
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -180,7 +173,7 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
+        @endif
 
 </div>
 </section>
