@@ -29,6 +29,11 @@ Route::get('/buku/cari','PagesController@cari')->name('cari');
 
 Route::get('/listkategori', 'PagesController@listkategori')->name('listkategori');
 
+Route::get('getBuku/{id}', function ($id) {
+    $buku = App\Models\Buku::where('kategori_id',$id)->get();
+    return response()->json($buku);
+});
+
 Auth::routes(['register' => false]);
 route::get('logout', 'Auth\LoginController@logout')->name('logout');
 route::get('/admin/user', 'Admin\UserController@create')->name('register');

@@ -142,24 +142,15 @@
             </div>
             </ul>
 
-            <div class="col">
-                <select class="form-control select2" name="kategori_id">
-                    <?php
-                    $old = isset($object) ? $object->kategori_id : old('kategori_id');
-                    ?>
-                    <option value="">Semua Kategori</option>
-                    <?php $__currentLoopData = $kategori; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $item): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                    <option value="<?php echo e($item->id); ?>" <?php echo e($old == $item->id ? 'selected' : ''); ?>><?php echo e($item->nama); ?></option>
-                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                </select>
-            </div>
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
                         <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
                     </ul>
+                    <button type="submit">cari</button>
                 </form>
+                
             </div>
 
 

@@ -142,24 +142,15 @@
             </div>
             </ul>
 
-            <div class="col">
-                <select class="form-control select2" name="kategori_id">
-                    @php
-                    $old = isset($object) ? $object->kategori_id : old('kategori_id');
-                    @endphp
-                    <option value="">Semua Kategori</option>
-                    @foreach ($kategori as $item)
-                    <option value="{{ $item->id }}" {{ $old == $item->id ? 'selected' : '' }}>{{ $item->nama }}</option>
-                    @endforeach
-                </select>
-            </div>
 
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
                         <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="{{ old('cari') }}">
                     </ul>
+                    <button type="submit">cari</button>
                 </form>
+                
             </div>
 
 
