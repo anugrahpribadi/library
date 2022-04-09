@@ -70,28 +70,6 @@ class Transaksi extends Model
         return '-';
     }
 
-    // public function user()
-    // {
-    //     return $this->belongsTo(\App\Model\User::class, 'anggota_id', 'id');
-    // }
-
-    // public function getUserNameAttribute()
-    // {
-    //     // return optional($this->anggota()->first('nama'))->first();
-    //     $user = $this->user()->first(['name']);
-
-    //     if (!is_null($user)) {
-    //         return $user->name;
-    //     }
-
-    //     return '-';
-    // }
-
-    // public function getAnggotaNameAttribute()
-    // {
-    //     return optional($this->anggota()->select('nama'))->get();
-    // }
-
     /**
      * Relation to buku
      *
@@ -120,11 +98,6 @@ class Transaksi extends Model
         return '-';
     }
 
-    public function denda()
-    {
-        return $this->hasMany(\App\Denda::class, 'denda_id', 'id');
-    }
-
     /**
      * Get Return Date
      * 
@@ -143,24 +116,6 @@ class Transaksi extends Model
         return $this->getAttribute('tgl_hrs_kembali');
     }
 
-    /**
-     * Get Judul Buku
-     * 
-     * 
-     */
-    // public function getDendaNameAttribute()
-    // {
-    //     // return optional($this->buku())->first('judul');
-
-    //     $denda = $this->denda()->first(['keterangan']);
-
-    //     if (!is_null($denda)) {
-    //         return $denda->keterangan;
-    //     }
-
-    //     return '-';
-    // }
-
     public function user()
     {
         return $this->belongsTo(\App\Models\User::class);
@@ -177,10 +132,5 @@ class Transaksi extends Model
         
         return '-';
     }
-
-    // public function user()
-    // {
-    //    return $this->belongsTo(User::class);
-    // }
 
 }

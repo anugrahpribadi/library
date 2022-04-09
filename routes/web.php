@@ -30,6 +30,7 @@ Route::get('/buku/kategori','PagesController@kategori')->name('kategori');
 Route::get('/userguide','PagesController@guide')->name('guide');
 
 Route::get('/listkategori', 'PagesController@listkategori')->name('listkategori');
+Route::get('/laporan/cari','TransaksiController@cari')->name('cari');
 
 Auth::routes(['register' => false]);
 route::get('logout', 'Auth\LoginController@logout')->name('logout');
@@ -46,6 +47,11 @@ route::middleware('admin')->group(function () {
     route::get('/laporanpengembalian/periode', 'TransaksiController@periodepengembalian')->name('periode_awal');
     route::get('/pinjam', 'TransaksiController@pinjam')->name('pinjam');
     route::get('/laporan/periode', 'TransaksiController@periodepinjam')->name('periode_awal');
+    route::get('/laporan', 'TransaksiController@pinjam')->name('pinjam');
+    route::get('/laporan/dataterbaru', 'TransaksiController@baru')->name('baru');
+    route::get('/laporan/dataterlama', 'TransaksiController@lama')->name('lama');
+    route::get('/histori/dataterbaru', 'TransaksiController@databaru')->name('baru');
+    route::get('/histori/dataterlama', 'TransaksiController@datalama')->name('lama');
 
     route::get('/cetaklaporan', 'TransaksiController@cetakLaporan')->name('cetaklaporan');
     route::get('/cetaklaporanpertanggal/{tglawal}/{tglakhir}', 'TransaksiController@cetakLaporanPertanggal')->name('cetaklaporanpertanggal');

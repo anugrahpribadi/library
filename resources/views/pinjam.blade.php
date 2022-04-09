@@ -9,7 +9,20 @@
 <div class="card">
     <div class="card-content">
         <div class="card-body">
+            <div class="row">
             <a href="{{ route('cetaklaporan') }}" class="btn btn-primary"><span class="fa fa-print"></span> Cetak</a>
+
+            <div class="col-md-3">
+            <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="{{ url('laporan/dataterbaru') }}"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
+                    <a class="dropdown-item" href="{{ url('laporan/dataterlama') }}"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
+                </div>
+            </div>
+            </div>
+            </div>
+
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" id="dataTable">
                     <thead>

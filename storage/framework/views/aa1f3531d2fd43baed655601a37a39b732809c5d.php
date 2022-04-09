@@ -29,6 +29,13 @@
 <div class="container-md">
     <!-- <a href="<?php echo e(route('menu')); ?>" class="btn btn-primary">Kembali</a> -->
     <h2>Riwayat Peminjaman</h2>
+    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?php echo e(url('histori/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
+                            <a class="dropdown-item" href="<?php echo e(url('histori/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
+                        </div>
+                    </div>
     <br><br>
     <div class="card">
         <div class="card-content">

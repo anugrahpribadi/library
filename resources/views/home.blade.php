@@ -9,8 +9,6 @@
 <section id="dashboard-analytics">
 
 <div class="row">
-
-        @if (auth()->user()->name == "Pustakawan")
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -25,7 +23,6 @@
                 </div>
             </div>
         </div>
-        @endif
 
         <div class="col-md-3">
             <div class="card">
@@ -42,7 +39,6 @@
             </div>
         </div>
 
-        {{-- @if (auth()->user()->name == "Admin") --}}
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -63,23 +59,6 @@
                 <div class="card-header d-flex flex-column align-items-start pb-0">
                     <div class="avatar bg-rgba-primary p-50 m-0">
                         <div class="user-content">
-                            <i class="feather icon-grid text-primary font-medium-5" button title="Total Peminjaman"></i>
-                        </div>
-                    </div>
-                    <h2 class="text-bold-700 mt-1">{{ $total }}</h2>
-                    <p class="mb-100">Total Peminjaman</p>
-                    <br>
-                </div>
-            </div>
-        </div>
-        {{-- @endif --}}
-
-        {{-- @if (auth()->user()->name == "Pustakawan") --}}
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header d-flex flex-column align-items-start pb-0">
-                    <div class="avatar bg-rgba-primary p-50 m-0">
-                        <div class="user-content">
                             <i class="feather icon-users text-primary font-medium-5" button title="Jumlah Anggota"></i>
                         </div>
                     </div>
@@ -89,7 +68,6 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
 
         <!-- <div class="col-md-3">
             <div class="card">
@@ -165,7 +143,7 @@
             </div>
         </div> -->
 
-        {{-- @if (auth()->user()->name == "Admin") --}}
+        @if (auth()->user()->name == "Admin")
         <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
@@ -180,7 +158,7 @@
                 </div>
             </div>
         </div>
-        {{-- @endif --}}
+        @endif
 
 </div>
 </section>

@@ -5,72 +5,73 @@
   <div class="row">
     <br>
     <table id="table" class="display" style="width:100%">
+      <tbody>
+        <?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+        <div class="col-md-3" style="max-width: 50rem;">
+          <div class="card mb-3 shadow-lg">
+            <br>
+            <?php if($b->cover_buku != null): ?>
+            <img src="<?php echo e(\Storage::url($b->cover_buku)); ?>" style="width: 130px;margin-left: auto;margin-right: auto;height: 170px;" class="card-img-top">
+            <?php endif; ?>
+            <hr>
+            <div class="card-body">
+              <h6><?php echo e($b->penulis); ?></h6>
+              <h4><b><?php echo e($b->judul); ?></b></h4>
+              <?php if(Auth::guest()): ?>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Detail
+              </button>
 
-      <?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-      <div class="col-md-3 py-9" style="max-width: 50rem;">
-        <div class="card mb-3">
-          <br>
-          <?php if($b->cover_buku != null): ?>
-          <img src="<?php echo e(\Storage::url($b->cover_buku)); ?>" style="" class="card-img-top">
-          <?php endif; ?>
-          <hr>
-          <div class="card-body">
-            <h6><?php echo e($b->penulis); ?></h6>
-            <h4><b><?php echo e($b->judul); ?></b></h4>
-            <?php if(Auth::guest()): ?>
-            <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
-              Detail
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">My Library</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                    Anda Harus Login Terlebih Dahulu Untuk Melihat Detail Buku!
-                  </div>
-                  <div class="modal-footer">
-                    <p><a href="<?php echo e(route('login')); ?>" class="btn btn-warning">Login Sekarang!</a></p>
+              <!-- Modal -->
+              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">My Library</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Anda Harus Login Terlebih Dahulu Untuk Melihat Detail Buku!
+                    </div>
+                    <div class="modal-footer">
+                      <p><a href="<?php echo e(route('login')); ?>" class="btn btn-warning">Login Sekarang!</a></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <?php else: ?>
-            <!-- <p><a href="<?php echo e(route('buku.index')); ?>" class="btn btn-success">Pinjam / Baca</a></p> -->
+              <?php else: ?>
+              <!-- <p><a href="<?php echo e(route('buku.index')); ?>" class="btn btn-success">Pinjam / Baca</a></p> -->
 
-            <p><a href="/detailbuku/<?php echo e($b->id); ?>" class="btn btn-success">Detail </a></p>
-            <?php endif; ?>
+              <p><a href="/detailbuku/<?php echo e($b->id); ?>" class="btn btn-success">Detail </a></p>
+              <?php endif; ?>
+            </div>
           </div>
         </div>
-      </div>
-      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+      </tbody>
     </table>
   </div>
 </div>
 
 <script>
   $(document).ready(function() {
-    $('#kategori').change(function(){
-      kategori();
+    $('#kategori').change(function() {
+      buku();
     })
   })
 
-  function buku()
-  {
+  function buku() {
     var kategori = $('#kategori').val();
     $.ajax({
-      url: '<?php echo route('setKategori',); ?>',
+      url: "<?php echo e(url('PagesController/setKategori')); ?>",
       data: "kategori=" + kategori,
       success: function(data) {
-        $("#bukuTable tbody").html(data);
+        $("#table tbody").html(data);
       }
     })
   }
 </script>
+
 
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 

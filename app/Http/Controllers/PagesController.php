@@ -130,7 +130,7 @@ class PagesController extends Controller
 
         $sisa = $tgl_hrs_kembali - $tgl_pinjam;
 
-        return view('beranda', compact('data', 'sisa'));
+        return view('beranda', compact('sisa'));
     }
 
     public function setKategori()
@@ -138,8 +138,53 @@ class PagesController extends Controller
         // $bukus = Buku::all();
         $kategori = $this->request->getVar('kategori');
         $currentPage = $this->request->getVar('menu') ? $this->request->getVar('menu') : 1;
-        // $kategoris = Kategori::pluck('nama', 'kategori_id');
-        // $data['kategoris'] = Kategori::with('buku')->select(['id', 'nama'])->get();
+        $buku = $this->Buku->filter($kategori);
+        ?>
+
+        <?php foreach($buku as $b) ?>
+        <div class="col-md-3" style="max-width: 50rem;">
+          <div class="card mb-3 shadow-lg">
+            <br>
+            if($b->cover_buku != null)
+            <img src="{{ \Storage::url($b->cover_buku) }}" style="width: 130px;margin-left: auto;margin-right: auto;height: 170px;" class="card-img-top">
+            endif
+            <hr>
+            <div class="card-body">
+              <h6>{{ $b->penulis }}</h6>
+              <h4><b>{{ $b->judul }}</b></h4>
+              <h6>{{ $b->kategori->nama }}</h6>
+              <?php if (Auth::guest()) ?>
+              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
+                Detail
+              </button>
+
+              <!-- Modal -->
+              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">My Library</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                      Anda Harus Login Terlebih Dahulu Untuk Melihat Detail Buku!
+                    </div>
+                    <div class="modal-footer">
+                      <p><a href="{{ route('login') }}" class="btn btn-warning">Login Sekarang!</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              else
+
+              <p><a href="/detailbuku/{{$b->id}}" class="btn btn-success">Detail </a></p>
+              endif
+            </div>
+          </div>
+        </div>
+        endforeach
+
+        <?php
 
         // return view ('menu', compact('bukus', 'kategoris'));
     }

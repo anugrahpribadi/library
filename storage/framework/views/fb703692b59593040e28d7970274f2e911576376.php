@@ -1,6 +1,6 @@
 <?php $__env->startSection('content'); ?>
-<!-- 
-<div class="row">
+
+<!-- <div class="col-md-3">
     <div class="card">
         <div class="card-header d-flex flex-column align-items-start pb-0">
             <div class="avatar bg-rgba-primary p-50 m-0">

@@ -148,4 +148,12 @@ class Buku extends Model
 
         return '-';
     }
+
+    public function filter($kategori)
+    {
+        return $this->table('bukus')
+        ->like('kategoris', $kategori)
+        ->join('kategoris', 'kategoris.kategori_id = bukus.kategori_id')
+        ->findAll();
+    }
 }

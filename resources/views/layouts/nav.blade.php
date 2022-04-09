@@ -122,6 +122,7 @@
                         <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="{{ old('cari') }}">
                     </ul>
                 </form>
+                
             </div>
 
             <a href="{{ route('guide') }}" class="badge bg-info">User Guide</a>

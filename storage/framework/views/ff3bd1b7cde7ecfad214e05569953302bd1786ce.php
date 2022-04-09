@@ -122,6 +122,7 @@
                         <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
                     </ul>
                 </form>
+                
             </div>
 
             <a href="<?php echo e(route('guide')); ?>" class="badge bg-info">User Guide</a>
