@@ -67,7 +67,7 @@ class PagesController extends Controller
         return view('detailbuku', compact('buku', 'katensi'));
     }
 
-    public function listkategori(Kategori $kategori)
+    public function listkategori(Kategori $kategori) 
     {
         $kategori = $kategori->buku()->get();
         $kategori = Kategori::all();
@@ -78,19 +78,25 @@ class PagesController extends Controller
     public function cari(Request $request)
     {
         // menangkap data pencarian
-        $cari = $request->cari;
-
+        $cari = $request->cari;            
+            
         // mengambil data dari table buku sesuai pencarian data
         $buku = DB::table('bukus')
-        ->get('buku:kategori_id, judul, penulis')
-            ->where('judul', 'like', "%" . $cari . "%")
-            ->orWhere('penulis', 'like', "%" . $cari . "%")
-    ->orWhereHas('kategoris', function ($q) use ($cari) {
-        $q->where('nama', 'LIKE', "%" . $cari . "%");
-    })->get();
+        ->where('judul', 'like', "%" . $cari . "%")
+        ->orWhere('penulis', 'like', "%" . $cari . "%")
+        ->paginate(5);
 
         // mengirim data buku ke view index
         return view('menu', ['buku' => $buku]);
+    }
+
+    public function kategori(Request $request)
+    {
+        $cari = $request->cari;
+        // $kategori = Kategori::where('nama', 'like', "%" . $cari . "%")->first();
+        $kategori = Kategori::with('buku')->where('nama','=',$request->cari);
+
+        return view('menu', ['kategori' => $kategori]);
     }
 
     // public function info()
@@ -107,6 +113,11 @@ class PagesController extends Controller
 
     //     return view('beranda', $sisa, $data);
     // }
+
+    public function guide()
+    {
+        return view('userguide');
+    }
 
     public function sisa()
     {

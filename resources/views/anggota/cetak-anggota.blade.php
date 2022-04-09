@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="form-group">
-        <div class="container">
+        <div class="container-md">
             <div class="row">
                 <center><img src="/img/logo.png" style="max-width: 150px;" class="inline"></center>
                 <center><img src="/img/logo1.jpeg" style="max-width: 150px;" class="inline"></center>
@@ -23,21 +23,19 @@
         </div>
         <hr>
         <h3><center>Data Anggota</center></h3>
-        <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
+        <table class="static" align="center" rules="all" border="5px" style="width: 95%;">
             <tr>
                 <th>No</th>
                 <th>Kode Anggota</th>
                 <th>Nama Anggota</th>
                 <th>Email Anggota</th>
-                <th>Telepon Anggota</th>
             </tr>
             @foreach($data as $data)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $data->kode }}</td>
-                <td>{{ $data->nama }}</td>
+                <td>{{ $data->name }}</td>
                 <td>{{ $data->email }}</td>
-                <td>{{ $data->telepon }}</td>
             </tr>
             @endforeach
         </table>

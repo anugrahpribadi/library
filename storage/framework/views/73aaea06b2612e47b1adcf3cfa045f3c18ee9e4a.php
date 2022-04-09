@@ -241,7 +241,7 @@ $actionUrl = route('buku.store');
               <div class="col-md-2">
               </div>
               <div class="col-md-10">
-                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Tambah</button>
+                <button type="submit" class="btn btn-primary mr-1 mb-1 waves-effect waves-light">Simpan</button>
               </div>
             </div>
           </div>
@@ -249,39 +249,6 @@ $actionUrl = route('buku.store');
       </div>
     </form>
   </div>
-  
-  <?php if(isset($transaksi)): ?>
-  <div class="col-md-4">
-    <div class="card">
-      <div class="card-header">
-        <h4 class="card-title">Detail Peminjaman</h4>
-      </div>
-      <br>
-      <div class="card-body">
-        <div class="text-center">
-          <img src="<?php echo e($object->photo_url); ?>" style="max-width: 50%;" class="rounded-circle img-border box-shadow-1">
-        </div>
-        <br>
-
-        <?php
-        $details = [
-        'name' => 'Name',
-        'email' => 'Email',
-        ];
-        ?>
-
-        <?php $__currentLoopData = $details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $label): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        <div class="mt-1">
-          <h6 class="mb-0"><?php echo e($label); ?>:</h6>
-          <p><?php echo e(!is_null($object->$key) ? $object->$key : '-'); ?></p>
-        </div>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-
-      </div>
-    </div>
-  </div>
-  <?php endif; ?>
-  
 </div>
 
 <?php $__env->stopSection(); ?>

@@ -19,7 +19,7 @@
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
                             <fieldset class="form-label-group position-relative has-icon-left">
-                                <input type="email" name="email" class="form-control" id="user-email" value="{{ old('email') }}" placeholder="Email" required>
+                                <input type="email" name="email" class="form-control" id="user-email" value="{{ old('email') }}" placeholder="Email" autofocus required>
                                 <div class="form-control-position">
                                     <i class="feather icon-user"></i>
                                 </div>
@@ -33,6 +33,24 @@
                                 </div>
                                 <label for="user-password">Password</label>
                             </fieldset>
+                            <div class="form-group d-flex justify-content-between align-items-center">
+                                <div class="text-left">
+                                    <fieldset class="checkbox">
+
+                                    <a href="{{ route('login') }}" onclick="alert('Hubungi Admin Jika Lupa Password');">Lupa Password?</a>
+
+                                        <!-- <div class="vs-checkbox-con vs-checkbox-primary">
+                                            <input type="checkbox" name="remember">
+                                            <span class="vs-checkbox">
+                                                <span class="vs-checkbox--check">
+                                                    <i class="vs-icon feather icon-check"></i>
+                                                </span>
+                                            </span>
+                                            <span class="">Remember me</span>
+                                        </div> -->
+                                    </fieldset>
+                                </div>
+                            </div>
                             <hr>
                             <a class="btn btn-primary" href="{{ route('menu') }}">Kembali</a>
                             <button type="submit" class="btn btn-primary float-right btn-inline">Login</button>

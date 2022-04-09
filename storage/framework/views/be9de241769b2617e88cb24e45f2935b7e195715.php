@@ -4,46 +4,42 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>">
     <style>
         table.static {
             position: relative;
             border: 1px solid #543535;
         }
     </style>
-    <title>Cetak Data Transaksi</title>
+    <title>Cetak Data Anggota</title>
 </head>
 <body>
     <div class="form-group">
-        <div class="container">
+        <div class="container-md">
             <div class="row">
                 <center><img src="/img/logo.png" style="max-width: 150px;" class="inline"></center>
                 <center><img src="/img/logo1.jpeg" style="max-width: 150px;" class="inline"></center>
             </div>
         </div>
         <hr>
-        <h3><center>Data Transaksi Peminjaman</center></h3>
-        <table class="static" align="center" rules="all" border="1px" style="width: 95%;">
+        <h3><center>Data Anggota</center></h3>
+        <table class="static" align="center" rules="all" border="5px" style="width: 95%;">
             <tr>
                 <th>No</th>
-                <th>Kode Peminjaman</th>
-                <th>Judul Buku</th>
+                <th>Kode Anggota</th>
                 <th>Nama Anggota</th>
-                <th>Tanggal Pinjam</th>
-                <th>Tanggal Harus Kembali</th>
+                <th>Email Anggota</th>
             </tr>
-            @foreach($data as $data)
+            <?php $__currentLoopData = $data; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $data): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
             <tr>
-                <td>{{ $loop->iteration }}</td>
-                <td>{{ $data->kode }}</td>
-                <td>{{ $data->buku_name }}</td>
-                <td>{{ $data->user_name }}</td>
-                <td>{{ $data->tgl_pinjam }}</td>
-                <td>{{ $data->tgl_hrs_kembali }}</td>
+                <td><?php echo e($loop->iteration); ?></td>
+                <td><?php echo e($data->kode); ?></td>
+                <td><?php echo e($data->name); ?></td>
+                <td><?php echo e($data->email); ?></td>
             </tr>
-            @endforeach
+            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
         </table>
-    </div>
+    </div><br><br><br>
 
     <script type="text/javascript">
     window.print();
@@ -51,7 +47,7 @@
     </script>
 
     <div class="container" style="text-align: right;">
-        <p>Bandung,<span id="tanggalwaktu"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+        <p>Bandung,<span id="tanggalwaktu"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
         <!-- <p>TTD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p> -->
         <img src="img/ttd2.jpeg" alt="" style="width: 200px; height: 100px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <script>
@@ -71,4 +67,4 @@
     </div>
 
 </body>
-</html>
+</html><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/anggota/cetak-anggota.blade.php ENDPATH**/ ?>

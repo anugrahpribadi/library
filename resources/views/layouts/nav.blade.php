@@ -142,7 +142,6 @@
             </div>
             </ul>
 
-
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left">
@@ -153,47 +152,7 @@
                 
             </div>
 
-
-            <!-- <button type="button" class="badge bg-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Panduan Pengguna
-            </button> -->
-
-            <!-- Modal -->
-            <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable modal-xl">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">My Library Panduan Pengguna</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <h3> User Anggota </h3>
-                            <p> 1. Login dengan Email & Password yang anda miliki
-                                <p><img src="img/panduan/Login.png" style="width: 700px;"></p>
-                                <p> 2. Di Halaman menu Navbar terdapat Beranda, Buku, dan Riwayat Peminjaman User Tersebut
-                                    <p><img src="img/panduan/UserAnggota-Navbar.png" style="width: 700px;"></p>
-                                <p> 3. Riwayat berfungsi agar User Anggota mengetahui Buku yang ia Pinjam dan apakah sudah dikembalikan apa belum buku tersebut
-                                    <p><img src="img/panduan/Riwayat-UserAnggota.png" style="width: 700px;"></p>
-                                    <hr>
-                                    <h5>Berikut Tata Cara Mendownload/Meminjam Buku</h5>
-                                <p> 4. Pilih Buku yang anda inginkan
-                                    <p><img src="img/panduan/UserAnggota-AfterLogin.png" style="width: 700px;"></p>
-                                <p> 5. Klik Detail Buku
-                                <p> 6. Apakah buku tersebut bisa di Download atau Anda mengambil buku tersebut ke Perpustakaan
-                                    <p><img src="img/panduan/UserAnggota-DetailBuku-Download.png" style="width: 650px;">
-                                    <img src="img/panduan/UserAnggota-DetailBuku-BacaBuku.png" style="width: 650px;">
-                                <p> 7. Jika Anda memilih buku yang akan di Download,setelah anda klik Button Download buku maka akan menampilkan Halaman PDF seperti dibawah
-                                    <p><img src="img/panduan/UserAnggota-DownloadBuku.png" style="width: 650px;">
-                                <p> 8. dan Jika Anda memilih Baca buku maka, setelah anda klik Button Baca Buku akan menampilkan Alert seperti dibawah 
-                                    <p><img src="img/panduan/UserAnggota-BacaBuku.png" style="width: 650px;">
-                            <p> 9. Halo
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
+            <a href="{{ route('guide') }}" class="badge bg-info">User Guide</a>
 
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
@@ -208,8 +167,8 @@
                     <a href="{{ route('login') }}" class="btn btn-outline-primary">Login</a>
                     @else
                     <div class="dropdown">
-                        Halo, {{ Auth::user()->name }}
-                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown"><span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
+                        
+                        <button type="button" class="btn btn-transparent dropdown-toggle" data-toggle="dropdown">Halo, {{ Auth::user()->name }}<span><img data-toggle="dropdown" class="round dropdown-toggle" src="/img/default.png" class="img-circle elevation-1" alt="User Image"></span></button>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{ route('profile.edit') }}"><i class="feather icon-edit"></i> Edit Profile</a>
                             <a class="dropdown-item" href="{{ url('/logout') }}"><i class="feather icon-log-out"></i> Logout</a>

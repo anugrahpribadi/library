@@ -27,8 +27,8 @@
             <tr>
                 <th>No</th>
                 <th>Kode Transaksi</th>
-                <th>Kode Buku</th>
-                <th>Kode Anggota</th>
+                <th>Judul Buku</th>
+                <th>Nama User Anggota</th>
                 <th>Tanggal Peminjaman</th>
                 <th>Batas Waktu Pengembalian</th>
             </tr>
@@ -37,7 +37,7 @@
                 <td><?php echo e($loop->iteration); ?></td>
                 <td><?php echo e($data->kode); ?></td>
                 <td><?php echo e($data->buku_name); ?></td>
-                <td><?php echo e($data->anggota_name); ?></td>
+                <td><?php echo e($data->user_name); ?></td>
                 <td><?php echo e($data->tgl_pinjam); ?></td>
                 <td><?php echo e($data->tgl_hrs_kembali); ?></td>
             </tr>
