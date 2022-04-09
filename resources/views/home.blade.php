@@ -54,7 +54,7 @@
             </div>
         </div>
 
-        <div class="col-md-3">
+        <!-- <div class="col-md-3">
             <div class="card">
                 <div class="card-header d-flex flex-column align-items-start pb-0">
                     <div class="avatar bg-rgba-primary p-50 m-0">
@@ -62,12 +62,12 @@
                             <i class="feather icon-users text-primary font-medium-5" button title="Jumlah Anggota"></i>
                         </div>
                     </div>
-                    <h2 class="text-bold-700 mt-1">{{ $anggota }}</h2>
+                    <h2 class="text-bold-700 mt-1"></h2>
                     <p class="mb-100">Jumlah Anggota</p>
                     <br>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <!-- <div class="col-md-3">
             <div class="card">

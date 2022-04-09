@@ -6,6 +6,9 @@
 ])
 
 @section('content')
+<br>
+<br>
+<br>
 <div class="container-lg">
     <div class="row">
         <div class="col-md-3">

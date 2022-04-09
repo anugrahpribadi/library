@@ -1,37 +1,9 @@
 <?php $__env->startSection('content'); ?>
 <?php echo csrf_field(); ?>
-
-<style type="text/css">
-  #scroll-btn {
-    display: none;
-    position: fixed;
-    bottom: 20px;
-    right: 30px;
-    z-index: 99;
-    font-size: 18px;
-    border: none;
-    outline: none;
-    background-color: orangered;
-    color: white;
-    cursor: pointer;
-    padding: 15px 19px;
-    border-radius: 100px;
-  }
-
-  #scroll-btn:hover {
-    background-color: blue;
-  }
-
-  .sampel {
-    min-height: 2000px;
-  }
-</style>
-
-<div class="container-md">
-
+<br>
+<div class="container-lg">
   <div class="row">
     <br>
-
     <table id="table" class="display" style="width:100%">
       <tbody>
         <?php $__currentLoopData = $buku; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $b): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>

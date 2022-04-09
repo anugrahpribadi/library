@@ -1,29 +1,20 @@
 <?php $__env->startSection('content'); ?>
 <div class="card">
     <div class="card-content">
-        <di class="card-body">
-
-        <!-- <div class="col">
-                <form action="/laporan/cari" method="GET">
-                    <ul class="float-left">
-                        <input type="text" class="form-control" id="cari" style="width: 200px;" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
-                    </ul>
-                </form>
-                
-            </div> -->
+        <div class="card-body">
+            <div class="row">
+            <a href="<?php echo e(route('cetaklaporan')); ?>" class="btn btn-primary"><span class="fa fa-print"></span> Cetak</a>
 
             <div class="col-md-3">
             <div class="dropdown">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
-                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
-                        </div>
-                    </div>
-                    </div>
-                    <div class="col-md-3">
-                <a href="<?php echo e(route('cetak-peminjaman')); ?>" target="_blank" class="btn btn-primary ml-5"><span class="fa fa-print"></span> Cetak</a>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="<?php echo e(url('laporan/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
+                    <a class="dropdown-item" href="<?php echo e(url('laporan/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
                 </div>
+            </div>
+            </div>
+            </div>
 
             <div class="table-responsive">
                 <table class="table table-bordered table-striped table-hover" id="dataTable">
@@ -38,7 +29,7 @@
                             <th scope="col">Tgl Pengembalian</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody id="dataTable">
                         <?php
                         $no = 0;
                         ?>
@@ -64,6 +55,24 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
+
+<?php $__env->startPush('after_styles'); ?>
+<link rel="stylesheet" href="<?php echo e(asset('app-assets/vendors/css/tables/datatable/datatables.min.css')); ?>">
+<?php $__env->stopPush(); ?>
+
+<?php $__env->startPush('after_scripts'); ?>
+<script src="<?php echo e(asset('app-assets/vendors/js/tables/datatable/datatables.min.js')); ?>"></script>
+<script src="<?php echo e(asset('app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')); ?>"></script>
+<script>
+// AJAX DataTable
+// AJAX DataTable
+$('.dataTable').DataTable({
+    processing: true,
+    serverSide: true,
+    ordering: false,
+});
+</script>
+<?php $__env->stopPush(); ?>
 
 <?php echo $__env->make('layouts.app', [
 'title' => 'Laporan Peminjaman',

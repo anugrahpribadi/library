@@ -1,5 +1,8 @@
 <?php $__env->startSection('content'); ?>
 
+<br>
+<br>
+
 <style type="text/css">
     #scroll-btn {
         display: none;
