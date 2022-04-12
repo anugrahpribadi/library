@@ -12,4 +12,7 @@
     }, {});
   });
 </script>
-<?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/userguide.blade.php ENDPATH**/ ?>
+
+<script type="text/javascript">
+    window.print();
+</script><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/userguide.blade.php ENDPATH**/ ?>

@@ -249,6 +249,7 @@ $actionUrl = route('buku.store');
       </div>
     </form>
   </div>
+
 </div>
 
 <?php $__env->stopSection(); ?>

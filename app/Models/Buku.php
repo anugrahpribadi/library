@@ -25,7 +25,7 @@ class Buku extends Model
         'thn_terbit',
         'cover_buku',
         'baca_buku',
-        'status',
+        'kondisi',
     ];
 
     /**

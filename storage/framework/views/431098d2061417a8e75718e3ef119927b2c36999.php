@@ -37,8 +37,9 @@ $('.dataTable').DataTable({
 </script>
 <?php $__env->stopPush(); ?>
 <?php echo $__env->make('layouts.app', [
-'title' => 'Cetak Laporan Peminjaman',
+'title' => 'Cetak Laporan Pertanggal',
 'breadcrumbs' => [
-'Cetak Laporan Peminjaman'
+'Laporan',
+'Cetak Laporan Pertanggal'
 ],
 ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/cetaklaporan.blade.php ENDPATH**/ ?>

@@ -31,12 +31,8 @@
 
     <!-- CSS -->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('/css/style.css')); ?>">
-    
-
 
     <!-- BEGIN: Theme CSS-->
-
-    <link rel="stylesheet" href="/app-assets/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/bootstrap.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/bootstrap-extended.css')); ?>">
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/colors.css')); ?>">
@@ -52,12 +48,6 @@
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('app-assets/css/core/menu/menu-types/vertical-menu.css')); ?>">
     <!-- END: Page CSS-->
 
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.min.css" integrity="sha512-kq3FES+RuuGoBW3a9R2ELYKRywUEQv0wvPTItv3DSGqjpbNtGWVdvT8qwdKkqvPzT93jp8tSF4+oN4IeTEIlQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <!-- Select2 Bootstrap theme CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-theme/0.1.0-beta.10/select2-bootstrap.css" integrity="sha512-CbQfNVBSMAYmnzP3IC+mZZmYMP2HUnVkV4+PwuhpiMUmITtSpS7Prr3fNncV1RBOnWxzz4pYQ5EAGG4ck46Oig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <style>
         * {}
     </style>
@@ -65,7 +55,6 @@
     <!-- BEGIN: Custom CSS-->
     <link rel="stylesheet" type="text/css" href="<?php echo e(asset('assets/css/style.css')); ?>">
     <!-- END: Custom CSS-->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg navbar-light" id="navbarToggleExternalContent" style="background-color: #93AFD4">
@@ -119,16 +108,17 @@
             <div class="col">
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left col-sm-10">
-                        <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>">
+                        <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>" required>
+                        <input type="submit" value="CARI" class="btn btn-primary plus float-right" style="float; right;">
                     </ul>
                 </form>
-                
             </div>
 
             <a href="<?php echo e(route('guide')); ?>" class="badge bg-info">User Guide</a>
 
             &ensp;
             <div class="garis_verikal" style="border-left: 1px gray solid;height: 55px;width: 0px;"></div>
+            &ensp;
 
             <ul class="nav navbar-nav float-right">
                 <li class="dropdown dropdown-user nav-item">

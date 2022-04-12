@@ -22,7 +22,7 @@ class CreateBukusTable extends Migration
             // $table->string('penerbit_nama')->references('nama')->on('penerbits')->nullable();
             // $table->string('penulis_nama')->references('nama')->on('penulis')->nullable();
             $table->string('kategori_id')->references('id')->on('kategoris')->nullable();
-            $table->string('sinopsis')->nullable();
+            $table->text('sinopsis')->nullable();
             $table->string('thn_terbit')->nullable();
             $table->string('jumlah_buku')->nullable();
             $table->string('cover_buku')->nullable();

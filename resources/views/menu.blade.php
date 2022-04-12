@@ -55,26 +55,6 @@
   </div>
 </div>
 
-<script>
-  $(document).ready(function() {
-    $('#kategori').change(function() {
-      buku();
-    })
-  })
-
-  function buku() {
-    var kategori = $('#kategori').val();
-    $.ajax({
-      url: "{{ url('PagesController/setKategori') }}",
-      data: "kategori=" + kategori,
-      success: function(data) {
-        $("#table tbody").html(data);
-      }
-    })
-  }
-</script>
-
-
 <button onclick="topFunction()" id="scroll-btn" title="Top"><i class="feather icon-arrow-up"></i></button>
 
 <script>

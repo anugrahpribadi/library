@@ -1,7 +1,8 @@
 @extends('layouts.app', [
-'title' => 'Cetak Laporan Peminjaman',
+'title' => 'Cetak Laporan Pertanggal',
 'breadcrumbs' => [
-'Cetak Laporan Peminjaman'
+'Laporan',
+'Cetak Laporan Pertanggal'
 ],
 ])
 

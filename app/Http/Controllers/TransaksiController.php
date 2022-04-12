@@ -211,30 +211,6 @@ class TransaksiController extends Controller
         return view('pinjam', compact('data'));
     }
 
-    public function periode(Request $request){
-        $tanggal_awal = date('Y-m-d',strtotime($request->tanggal_awal));
-        $tanggal_akhir = date('Y-m-d',strtotime($request->tanggal_akhir));
-
-        $data = Transaksi::where('tgl_pinjam','>=',$tanggal_awal)->where('tgl_pinjam','<=',$tanggal_akhir)->withTrashed()->get();
-        // dd($data);
-        return view('pinjam',compact('data'));
-    }
-    
-    public function cari(Request $request)
-    {
-        // menangkap data pencarian
-        $cari = $request->cari;            
-            
-        // mengambil data dari table transaksi sesuai pencarian data
-        $data = DB::table('transaksis')
-        ->where('tgl_pinjam', 'like', "%" . $cari . "%")
-        ->orWhere('tgl_hrs_kembali', 'like', "%" . $cari . "%")
-        ->paginate(5);
-
-        // mengirim data transaksi ke view index
-        return view('pinjam', $data);
-    }
-
     public function baru()
     {
         $data = Transaksi::withTrashed()->orderBy('tgl_pinjam', 'desc')->get();

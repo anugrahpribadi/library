@@ -3,17 +3,17 @@
     <div class="card-content">
         <div class="card-body">
             <div class="row">
-            <a href="<?php echo e(route('cetaklaporan')); ?>" class="btn btn-primary"><span class="fa fa-print"></span> Cetak</a>
-
-            <div class="col-md-3">
-            <div class="dropdown">
-                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="<?php echo e(url('laporan/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
-                    <a class="dropdown-item" href="<?php echo e(url('laporan/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
+                
+                <a href="<?php echo e(route('cetaklaporan')); ?>" class="btn btn-primary"><span class="fa fa-print"></span> Cetak</a>
+                <div class="col-md-3">
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">Urut Berdasarkan</button>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterbaru')); ?>"><i class="feather icon-chevrons-up"></i>Data Terbaru</a>
+                            <a class="dropdown-item" href="<?php echo e(url('laporan/dataterlama')); ?>"><i class="feather icon-chevrons-down"></i> Data Terlama</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            </div>
             </div>
 
             <div class="table-responsive">
@@ -42,9 +42,9 @@
                             <td><?php echo e(date('d F Y', strtotime($dataa->tgl_pinjam))); ?></td>
                             <td><?php echo e(date('d F Y', strtotime($dataa->tgl_hrs_kembali))); ?></td>
                             <?php if($dataa->deleted_at == null): ?>
-                            <td>Belum Dikembalikan!</td>
+                            <td class="badge bg-warning">Belum Dikembalikan!</td>
                             <?php else: ?>
-                            <td><?php echo e(date('d F Y', strtotime($dataa->deleted_at))); ?></td>
+                            <td class="badge bg-success"><?php echo e(date('d F Y', strtotime($dataa->deleted_at))); ?></td>
                             <?php endif; ?>
                         </tr>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -77,6 +77,7 @@ $('.dataTable').DataTable({
 <?php echo $__env->make('layouts.app', [
 'title' => 'Laporan Peminjaman',
 'breadcrumbs' => [
+'Laporan',
 'Laporan Peminjaman'
 ],
 ], \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/pinjam.blade.php ENDPATH**/ ?>

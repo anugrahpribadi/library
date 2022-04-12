@@ -1,5 +1,5 @@
 <?php $__env->startSection('content'); ?>
-<div class="container">
+<div class="container" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

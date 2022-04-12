@@ -1,7 +1,12 @@
 <?php $__env->startSection('content'); ?>
 <br>
-<div class="container-lg">
-  <a href="<?php echo e(route('menu')); ?>" class="btn btn-primary">Kembali</a>
+<div class="container-md">
+  <button onclick="goBack()" class="badge bg-info">Kembali</button>
+  <script>
+      function goBack() {
+          window.history.back();
+      }
+  </script>
 </div>
 <br>
 <div class="container-md">
@@ -13,59 +18,54 @@
             <br>
             <img src="<?php echo e(\Storage::url($buku->cover_buku)); ?>" class="img-fluid rounded-start" alt="...">
           </div>
-          <div class="col-md-8">
-              <div class="card-body">
-              <h1 class="card-title"><?php echo e($buku->judul); ?></h1>
-                <p class="card-text">
-                  <b> Sinopsis : </b><?php echo e($buku->sinopsis); ?>
+          	<div class="col-md-8">
+            	<div class="card-body">
+					<h1 class="card-title"><?php echo e($buku->judul); ?></h1>
+						<p class="card-text"><b> Sinopsis : </b><?php echo e($buku->sinopsis); ?></p>
+						<hr>
+						<h3>Detail Buku</h3>
+							<p class="card-text"><b> Penerbit : </b> <?php echo e($buku->penerbit); ?></p>
+							<p class="card-text"><b> Penulis : </b> <?php echo e($buku->penulis); ?></p>
+							<p class="card-text"><b> Kategori : </b> <?php echo e($buku->kategori->nama); ?></p>
+							<p class="card-text"><b> Tahun Terbit : </b> <?php echo e($buku->thn_terbit); ?></p>
+							<p class="card-text"><b> Yang Tersedia di Perpustakaan : </b> <?php echo e($buku->jumlah_buku); ?></p>
+							<?php if(Auth::guest()): ?>
+							<p><a href="<?php echo e(route('login')); ?>" class="btn btn-success">Pinjam</a></p>
+							<?php else: ?>
+							<?php if(!is_null($buku->baca_buku_url)): ?> 
+							<a href="<?php echo e($buku->baca_buku_url); ?>" class="btn btn-success">Download Buku <?php echo e($buku->judul); ?></a>
+							<?php else: ?>
+							<!-- Button trigger modal -->
+							<button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bacaBuku">
+								Baca
+							</button>
 
-                </p>
-                <hr>
-                <h3>Detail Buku</h3>
-                    <p class="card-text"><b> Penerbit : </b> <?php echo e($buku->penerbit); ?></p>
-                    <p class="card-text"><b> Penulis : </b> <?php echo e($buku->penulis); ?></p>
-                    <p class="card-text"><b> Kategori : </b> <?php echo e($buku->kategori->nama); ?></p>
-                    <p class="card-text"><b> Tahun Terbit : </b> <?php echo e($buku->thn_terbit); ?></p>
-                    <p class="card-text"><b> Yang Tersedia di Perpustakaan : </b> <?php echo e($buku->jumlah_buku); ?></p>
-                    <?php if(Auth::guest()): ?>
-                    <p><a href="<?php echo e(route('login')); ?>" class="btn btn-success">Pinjam Buku</a></p>
-                    <?php else: ?>
-                      <?php if(!is_null($buku->baca_buku_url)): ?> 
-                      <a href="<?php echo e($buku->baca_buku_url); ?>" class="btn btn-success">Download Buku <?php echo e($buku->judul); ?></a>
-                      <?php else: ?>
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#bacaBuku">
-                        Baca Buku
-                      </button>
-
-                      <!-- Modal -->
-                      <div class="modal fade" id="bacaBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title" id="exampleModalLabel">My Library</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                              Datanglah Ke Perpustakaan Untuk Meminjam Buku Ini!
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Oke</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <?php endif; ?>
-                    <?php endif; ?>
-              </div>
+							<!-- Modal -->
+							<div class="modal fade" id="bacaBuku" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+								<div class="modal-dialog">
+									<div class="modal-content">
+										<div class="modal-header">
+											<h5 class="modal-title" id="exampleModalLabel">My Library</h5>
+											<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+										</div>
+										<div class="modal-body">
+											Datanglah Ke Perpustakaan Untuk Meminjam Buku Ini!
+										</div>
+										<div class="modal-footer">
+											<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Oke</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<?php endif; ?>
+						<?php endif; ?>
+              	</div>
             </div>
-          </div>
-          <br>
         </div>
+          <br>
     </div>
+  </div>
 </div>
-</body>
-</html>
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startPush('after_scripts'); ?>
@@ -91,25 +91,6 @@ $('#crudTable').DataTable({
         { data: 'jumlah_buku', name: 'jumlah_buku' },
         { data: 'action', name: 'action' },
     ],
-    drawCallback: function() {
-        // Delete Confirmation
-        $(".delete").on("click", function() {
-            var form = $(this).parent().find("form");
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "Are you sure to delete this?",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes!'
-            }).then((result) => {
-                if (result.value) {
-                    form.submit();
-                  }
-            })
-        });
-    }
 });
 
 </script>

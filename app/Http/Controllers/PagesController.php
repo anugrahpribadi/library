@@ -91,30 +91,6 @@ class PagesController extends Controller
         return view('menu', ['buku' => $buku]);
     }
 
-    public function kategori(Request $request)
-    {
-        $cari = $request->cari;
-        // $kategori = Kategori::where('nama', 'like', "%" . $cari . "%")->first();
-        $kategori = Kategori::with('buku')->where('nama','=',$request->cari);
-
-        return view('menu', ['kategori' => $kategori]);
-    }
-
-    // public function info()
-    // {
-    //     $auth = Auth::user()->id;
-
-    //     $tgl_pinjam = ('tgl_pinjam');
-    //     $tgl_hrs_kembali = ('tgl_hrs_kembali');
-    //     $pinjam  = strtotime($tgl_pinjam); //Waktu awal
-    //     $batas = strtotime($tgl_hrs_kembali); // Waktu sekarang atau akhir
-
-    //     $sisa  = $batas - $pinjam;
-    //     $data = Transaksi::with('buku')->where('user_id', $auth)->get();
-
-    //     return view('beranda', $sisa, $data);
-    // }
-
     public function guide()
     {
         return view('userguide');
@@ -132,70 +108,4 @@ class PagesController extends Controller
 
         return view('beranda', compact('sisa'));
     }
-
-    public function setKategori()
-    {
-        // $bukus = Buku::all();
-        $kategori = $this->request->getVar('kategori');
-        $currentPage = $this->request->getVar('menu') ? $this->request->getVar('menu') : 1;
-        $buku = $this->Buku->filter($kategori);
-        ?>
-
-        <?php foreach($buku as $b) ?>
-        <div class="col-md-3" style="max-width: 50rem;">
-          <div class="card mb-3 shadow-lg">
-            <br>
-            if($b->cover_buku != null)
-            <img src="{{ \Storage::url($b->cover_buku) }}" style="width: 130px;margin-left: auto;margin-right: auto;height: 170px;" class="card-img-top">
-            endif
-            <hr>
-            <div class="card-body">
-              <h6>{{ $b->penulis }}</h6>
-              <h4><b>{{ $b->judul }}</b></h4>
-              <h6>{{ $b->kategori->nama }}</h6>
-              <?php if (Auth::guest()) ?>
-              <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#loginModal">
-                Detail
-              </button>
-
-              <!-- Modal -->
-              <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="exampleModalLabel">My Library</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                      Anda Harus Login Terlebih Dahulu Untuk Melihat Detail Buku!
-                    </div>
-                    <div class="modal-footer">
-                      <p><a href="{{ route('login') }}" class="btn btn-warning">Login Sekarang!</a></p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              else
-
-              <p><a href="/detailbuku/{{$b->id}}" class="btn btn-success">Detail </a></p>
-              endif
-            </div>
-          </div>
-        </div>
-        endforeach
-
-        <?php
-
-        // return view ('menu', compact('bukus', 'kategoris'));
-    }
-
-    // public function kategoriAjax($id)
-    // {
-    //     if($id == 0){
-    //         $bukus = Buku::all();
-    //     } else{
-    //         $bukus = Buku::where('kategori_id', '=', $id)->get();
-    //     }
-    //     return $bukus;
-    // }
 }
