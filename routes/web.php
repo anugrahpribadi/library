@@ -26,6 +26,7 @@ route::get('/buku', 'PagesController@buku')->name('buku');
 
 Route::resource('/pages', 'PagesController');
 Route::get('/buku/cari','PagesController@cari')->name('cari');
+Route::get('/info','PagesController@info')->name('info');
 Route::get('/buku/kategori','PagesController@kategori')->name('kategori');
 Route::get('/userguide','PagesController@guide')->name('guide');
 

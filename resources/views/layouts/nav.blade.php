@@ -113,6 +113,10 @@
                         </li>
                     @endcan
                     @endif
+                    &ensp;
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-info btn-lg" href="{{ route('info') }}">Info</a>
+                    </li>
             </div>
             </ul>
 

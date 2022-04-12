@@ -58,6 +58,11 @@ class PagesController extends Controller
         return view('detailbuku', compact('buku', 'katensi'));
     }
 
+    public function info()
+    {
+        return view('info');
+    }
+
     public function show($id)
     {
         $buku = Buku::findOrFail($id);
