@@ -102,6 +102,10 @@
                         </li>
                     <?php endif; ?>
                     <?php endif; ?>
+                    &ensp;
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-info btn-lg" href="<?php echo e(route('info')); ?>">Info</a>
+                    </li>
             </div>
             </ul>
 
