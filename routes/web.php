@@ -35,6 +35,8 @@ Route::get('/laporan/cari','TransaksiController@cari')->name('cari');
 Auth::routes();
 route::get('logout', 'Auth\LoginController@logout')->name('logout');
 route::get('/admin/user', 'Admin\UserController@create')->name('register');
+route::post('/auth/login', 'RegisterController@store')->name('registerPost');
+route::get('/auth/regis', 'Auth\LoginController@register')->name('regis');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('profile', 'ProfileController@edit')->name('profile.edit');
@@ -44,22 +46,22 @@ Route::group(['middleware' => 'auth'], function () {
 route::middleware('admin')->group(function () {
     route::get('/home', 'HomeController@index')->name('home');
     route::get('/histori', 'TransaksiController@histori')->name('histori');
-    
+
     route::get('/laporanpengembalian/periode', 'TransaksiController@periodepengembalian')->name('periode_awal');
     route::get('/laporan/periode', 'TransaksiController@periodepinjam')->name('periode_awal');
-    
+
     // ASC & DESC
     route::get('/laporan/dataterbaru', 'TransaksiController@baru')->name('baru');
     route::get('/laporan/dataterlama', 'TransaksiController@lama')->name('lama');
     route::get('/histori/dataterbaru', 'TransaksiController@databaru')->name('baru');
     route::get('/histori/dataterlama', 'TransaksiController@datalama')->name('lama');
-    
+
     // Filter Laporan
     route::get('/pinjam', 'TransaksiController@pinjam')->name('pinjam');
     route::get('/cetaklaporan', 'TransaksiController@cetakLaporan')->name('cetaklaporan');
     route::get('/cetaklaporanpertanggal/{tglawal}/{tglakhir}', 'TransaksiController@cetakLaporanPertanggal')->name('cetaklaporanpertanggal');
     Route::get('/laporan/periode','Transaksicontroller@periode')->name('periode');
-    
+
 
     Route::prefix('acl')->name('acl.')->group(function () {
         Route::get('permission', 'Admin\ACLController@permissionList')->name('permission.index');
@@ -99,7 +101,7 @@ route::middleware('admin')->group(function () {
     Route::resource('/transaksi', 'TransaksiController');
     Route::get('/transaksi/data/json', 'TransaksiController@getData')->name('transaksi.data');
     Route::get('/cetak-transaksi', 'TransaksiController@cetak')->name('cetak-transaksi');
-    
+
 });
 
 Route::get('check/accessor', function (App\Models\Transaksi $id) {

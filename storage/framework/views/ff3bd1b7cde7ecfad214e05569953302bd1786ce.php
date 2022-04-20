@@ -113,7 +113,6 @@
                 <form action="/buku/cari" method="GET">
                     <ul class="nav navbar-nav float-left col-sm-10">
                         <input type="text" class="form-control" id="cari" name="cari" placeholder="Judul atau Penulis" value="<?php echo e(old('cari')); ?>" required>
-                        <input type="submit" value="CARI" class="btn btn-primary plus float-right" style="float; right;">
                     </ul>
                 </form>
             </div>

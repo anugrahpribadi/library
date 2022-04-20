@@ -115,4 +115,5 @@ $actionUrl = route('anggota.store');
 </div>
 
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.app', $viewData, \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\xampp\htdocs\new-perpus1\resources\views/anggota/form.blade.php ENDPATH**/ ?>

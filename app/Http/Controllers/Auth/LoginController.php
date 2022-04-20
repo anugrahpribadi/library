@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -49,5 +50,13 @@ class LoginController extends Controller
  
         return redirect('menu')
             ->withSuccess('Terimakasih, selamat datang kembali!');
+    }
+
+    
+    public function register(Request $request)
+    {
+        $data['roles'] = \Spatie\Permission\Models\Role::get(['id', 'name']);
+        $data['permissions'] = \App\Models\Permission::whereNull('parent_id')->get(['id', 'name']);
+        return view('admin.user.register', $data);
     }
 }

@@ -182,22 +182,6 @@ $actionUrl = route('buku.store');
                 </div>
               </div>
 
-              <!-- <div class="col-12">
-                <div class="form-group row">
-                  <div class="col-md-2">
-                    <span>Cover Buku</span>
-                  </div>
-                  <div class="col-md-10">
-                    <div class="position-relative has-icon-left">
-                      <input type="file" class="form-control" name="status" value="<?php echo e(isset($object) ? $object->status : old('status')); ?>" placeholder="Status">
-                      <div class="form-control-position">
-                        <i class="feather icon-wind"></i>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div class="col-12">
                 <div class="form-group row">
                   <div class="col-md-2">

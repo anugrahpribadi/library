@@ -14,11 +14,7 @@ use App\Models\Anggota;
  */
 class UserController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -59,7 +55,7 @@ class UserController extends Controller
                 ],
             ]
         ];
-        
+
         return view('admin.user.index', $data);
     }
 
@@ -71,11 +67,11 @@ class UserController extends Controller
     public function getData()
     {
         $query = User::select([
-            'id', 
-            'name', 
-            'alamat', 
-            'telepon', 
-            'email', 
+            'id',
+            'name',
+            'alamat',
+            'telepon',
+            'email',
             'created_at'
         ])->withCount('roles')->orderBy('roles_count', 'desc');
 
@@ -86,7 +82,7 @@ class UserController extends Controller
         })->addColumn('action', function($item){
             $string = '';
             if (auth()->user()->can('edit users')) {
-                $string .= '<a href="' . route('users.edit', $item->id) . '"><button title="Edit" class="btn btn-icon btn-sm btn-success waves-effect waves-light" style="margin-right: 5px;"><i class="fa fa-eye"></i></button></a>';    
+                $string .= '<a href="' . route('users.edit', $item->id) . '"><button title="Edit" class="btn btn-icon btn-sm btn-success waves-effect waves-light" style="margin-right: 5px;"><i class="fa fa-eye"></i></button></a>';
             }
 
             if ($item->id != request()->user()->id && auth()->user()->can('delete users')) {
@@ -108,7 +104,7 @@ class UserController extends Controller
         if (!auth()->user()->can('create users')) {
             abort(403);
         }
-        
+
         $data['roles'] = \Spatie\Permission\Models\Role::get(['id', 'name']);
         $data['permissions'] = \App\Models\Permission::whereNull('parent_id')->get(['id', 'name']);
 
@@ -126,7 +122,7 @@ class UserController extends Controller
         $api = app(\App\Http\Controllers\Admin\UserController::class);
         $payload = request()->except(['_method', '_token']);
         $payload = $api->prepareData($payload);
-        
+
         \DB::transaction(function() use($payload) {
             $this->user = User::create($payload);
             $this->anggota = Anggota::create($payload);
@@ -190,7 +186,7 @@ class UserController extends Controller
         $payload = request()->except(['_method', '_token']);
         $payload = $api->prepareData($payload);
         $user = User::findOrFail($id);
-        
+
         \DB::transaction(function() use($user, $payload) {
             $user->update($payload);
 
@@ -207,7 +203,7 @@ class UserController extends Controller
             if (isset($payload['permissions']) && count($payload['permissions']) > 0) {
                 $user->permissions()->attach($payload['permissions']);
             }
-            
+
         });
 
         return redirect()->back()->with('status', 'User successfully updated.');

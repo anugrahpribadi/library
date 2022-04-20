@@ -39,7 +39,7 @@
 
                                     <a href="{{ route('login') }}" onclick="alert('Hubungi Admin Jika Lupa Password');">Lupa Password?</a>
 
-                                        <!-- <div class="vs-checkbox-con vs-checkbox-primary">
+                                    <!-- <div class="vs-checkbox-con vs-checkbox-primary">
                                             <input type="checkbox" name="remember">
                                             <span class="vs-checkbox">
                                                 <span class="vs-checkbox--check">
@@ -49,6 +49,7 @@
                                             <span class="">Remember me</span>
                                         </div> -->
                                     </fieldset>
+                                    <a href="{{ route('regis') }}">Register</a>
                                 </div>
                             </div>
                             <hr>

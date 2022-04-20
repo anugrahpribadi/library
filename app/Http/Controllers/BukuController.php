@@ -179,12 +179,6 @@ class BukuController extends Controller
         return redirect()->route('buku.index')->with('status', 'Book successfully created.');
     }
 
-    // public function show($id)
-    // {
-    //     $buku = Buku::find($id);
-    //     return view('detailbuku',compact('buku'));
-    // }
-
     /**
      * Show the form for editing the specified resource.
      *
@@ -218,40 +212,6 @@ class BukuController extends Controller
 
         return redirect()->route('buku.index')->with('status', 'Book successfully updated.');
     }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Buku  $buku
-     * @return \Illuminate\Http\Response
-     */
-    // public function transaksiedit($id)
-    // {
-    //     if (!auth()->user()->can('edit buku')) {
-    //         abort(403);
-    //     }
-        
-    //     $data['transaksi'] = Buku::findOrFail($id);
-    //     $data['kategori'] = Kategori::with('buku')->select(['id', 'nama'])->get();
-
-    //     return view('Book.form', $data);
-    // }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \Illuminate\Http\Request  $request
-    //  * @param  \App\Buku  $buku
-    //  * @return \Illuminate\Http\Response
-    //  */
-    // public function transaksiupdate(Request $request, $id)
-    // {
-    //     $payload = $this->prepareData($request);
-    //     $buku = Buku::findOrFail($id);
-    //     $buku->update($payload);
-
-    //     return redirect()->route('buku.index')->with('status', 'Book successfully updated.');
-    // }
 
     /**
      * Remove the specified resource from storage.
